@@ -175,71 +175,153 @@ function Nav() {
 
 // ─── Hero
 
+function NetworkGraphic() {
+  const nodes = [
+    { x: 50, y: 8, r: 5, glow: true },
+    { x: 18, y: 28, r: 3.5 },
+    { x: 82, y: 22, r: 4 },
+    { x: 35, y: 48, r: 6, glow: true },
+    { x: 68, y: 52, r: 3.5 },
+    { x: 12, y: 66, r: 3 },
+    { x: 88, y: 68, r: 5, glow: true },
+    { x: 50, y: 82, r: 4 },
+    { x: 30, y: 92, r: 3 },
+    { x: 70, y: 90, r: 3.5 },
+  ];
+
+  const edges = [
+    [0, 1], [0, 2], [0, 3], [1, 3], [2, 4], [3, 4],
+    [3, 5], [4, 6], [5, 7], [6, 7], [7, 8], [7, 9], [3, 7],
+  ];
+
+  return (
+    <svg viewBox="0 0 100 100" className="w-full h-full" style={{ overflow: "visible" }}>
+      {edges.map(([a, b], i) => (
+        <line
+          key={i}
+          x1={nodes[a].x}
+          y1={nodes[a].y}
+          x2={nodes[b].x}
+          y2={nodes[b].y}
+          stroke="#1e4235"
+          strokeWidth="0.3"
+        />
+      ))}
+      {nodes.map((n, i) => (
+        <circle
+          key={i}
+          cx={n.x}
+          cy={n.y}
+          r={n.r / 10}
+          fill={n.glow ? "#B6FF20" : "#20C66B"}
+          opacity={n.glow ? 0.9 : 0.5}
+          className={n.glow ? "pulse-dot" : ""}
+        />
+      ))}
+    </svg>
+  );
+}
+
 function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center text-center overflow-hidden px-6 pt-24 pb-20">
+    <section className="relative min-h-screen flex items-center overflow-hidden px-6 pt-32 pb-20">
       <div className="absolute inset-0 grid-bg" />
 
       {/* Ambient orbs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div
-          className="orb-1 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[560px] h-[560px] rounded-full"
+          className="orb-1 absolute top-1/3 left-1/4 w-[500px] h-[500px] rounded-full"
           style={{
             background: "radial-gradient(circle, #20C66B 0%, #0B5D38 45%, transparent 70%)",
             filter: "blur(90px)",
-            opacity: 0.13,
+            opacity: 0.11,
           }}
         />
         <div
-          className="orb-2 absolute top-1/4 right-1/4 w-[360px] h-[360px] rounded-full"
+          className="orb-2 absolute bottom-1/4 right-1/4 w-[380px] h-[380px] rounded-full"
           style={{
             background: "radial-gradient(circle, #B6FF20 0%, #20C66B 50%, transparent 70%)",
             filter: "blur(90px)",
-            opacity: 0.08,
+            opacity: 0.07,
           }}
         />
       </div>
 
-      <div className="relative z-10 max-w-5xl mx-auto flex flex-col items-center gap-8">
-        {/* Status badge */}
-        <div className="animate-fade-up animate-delay-1">
-          <span
-            className="inline-flex items-center gap-2 text-xs font-medium rounded-full px-4 py-1.5 border"
-            style={{ color: "#9AADA2", borderColor: "#17352A", background: "rgba(23,53,42,0.5)" }}
+      <div className="relative z-10 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-16 items-center">
+        {/* Left — text content, left-aligned */}
+        <div className="flex flex-col items-start gap-8 text-left">
+          <div className="animate-fade-up animate-delay-1">
+            <span
+              className="inline-flex items-center gap-2 text-xs font-medium rounded-full px-4 py-1.5 border"
+              style={{ color: "#9AADA2", borderColor: "#17352A", background: "rgba(23,53,42,0.5)" }}
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-[#20C66B] pulse-dot" />
+              Accepting new clients
+            </span>
+          </div>
+
+          <h1
+            className="animate-fade-up animate-delay-2 font-display font-extrabold text-5xl md:text-6xl lg:text-[72px] leading-[1.02] tracking-[-0.03em]"
+            style={{ color: "#F2F7F3" }}
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-[#20C66B] pulse-dot" />
-            Accepting new clients
-          </span>
+            Maxi Labs
+            <br />
+            <span className="gradient-text">Web3 Growth,</span>
+            <br />
+            <span style={{ color: "rgba(242,247,243,0.85)" }}>Engineered.</span>
+          </h1>
+
+          <p
+            className="animate-fade-up animate-delay-3 text-lg md:text-xl max-w-lg leading-relaxed font-light"
+            style={{ color: "#9AADA2" }}
+          >
+            We help Web3 creators and protocols build communities that last through authentic engagement, precise social strategy, and deep culture fluency.
+          </p>
+
+          <div className="animate-fade-up animate-delay-4 flex flex-col sm:flex-row gap-3 items-start">
+            <a href="#selected-work" className="btn-primary px-7 py-3.5 rounded-xl text-[15px] inline-flex items-center gap-2.5">
+              View our work
+              <svg width="14" height="14" fill="none" viewBox="0 0 14 14">
+                <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </a>
+            <a href="#contact" className="btn-ghost px-7 py-3.5 rounded-xl text-[15px] inline-flex items-center gap-2.5">
+              Work with us
+            </a>
+          </div>
+
+          {/* Small credibility row */}
+          <div
+            className="animate-fade-up animate-delay-4 flex items-center gap-6 pt-2"
+            style={{ borderTop: "1px solid #17352A", marginTop: "0.5rem", paddingTop: "1.5rem", width: "100%" }}
+          >
+            <div>
+              <p className="font-display font-bold text-2xl" style={{ color: "#F2F7F3" }}>Web3</p>
+              <p className="text-xs mt-0.5" style={{ color: "#9AADA2" }}>Native operators</p>
+            </div>
+            <div className="w-px h-8" style={{ background: "#17352A" }} />
+            <div>
+              <p className="font-display font-bold text-2xl" style={{ color: "#F2F7F3" }}>Full-cycle</p>
+              <p className="text-xs mt-0.5" style={{ color: "#9AADA2" }}>Launch to retention</p>
+            </div>
+            <div className="w-px h-8" style={{ background: "#17352A" }} />
+            <div>
+              <p className="font-display font-bold text-2xl" style={{ color: "#F2F7F3" }}>Selective</p>
+              <p className="text-xs mt-0.5" style={{ color: "#9AADA2" }}>Curated client roster</p>
+            </div>
+          </div>
         </div>
 
-        {/* Headline */}
-        <h1 className="animate-fade-up animate-delay-2 font-display font-extrabold text-5xl md:text-7xl lg:text-[88px] leading-[1.0] tracking-[-0.03em] max-w-4xl" style={{ color: "#F2F7F3" }}>
-          Maxi Labs
-          <br />
-          <span className="gradient-text">Web3 Growth,</span>
-          <br />
-          <span style={{ color: "rgba(242,247,243,0.85)" }}>Engineered.</span>
-        </h1>
-
-        {/* Sub */}
-        <p
-          className="animate-fade-up animate-delay-3 text-lg md:text-xl max-w-xl leading-relaxed font-light"
-          style={{ color: "#9AADA2" }}
-        >
-          We help Web3 creators and protocols build communities that last through authentic engagement, precise social strategy, and deep culture fluency.
-        </p>
-
-        {/* CTAs */}
-        <div className="animate-fade-up animate-delay-4 flex flex-col sm:flex-row gap-3 items-center">
-          <a href="#selected-work" className="btn-primary px-7 py-3.5 rounded-xl text-[15px] inline-flex items-center gap-2.5">
-            View our work
-            <svg width="14" height="14" fill="none" viewBox="0 0 14 14">
-              <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </a>
-          <a href="#contact" className="btn-ghost px-7 py-3.5 rounded-xl text-[15px] inline-flex items-center gap-2.5">
-            Work with us
-          </a>
+        {/* Right — network graphic, hidden on small screens */}
+        <div className="hidden lg:block relative animate-fade-up animate-delay-4" style={{ aspectRatio: "1 / 1" }}>
+          <div
+            className="absolute inset-0 rounded-full"
+            style={{
+              background: "radial-gradient(circle, rgba(32,198,107,0.08) 0%, transparent 70%)",
+              filter: "blur(20px)",
+            }}
+          />
+          <NetworkGraphic />
         </div>
       </div>
 
