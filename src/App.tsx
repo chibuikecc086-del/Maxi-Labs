@@ -56,7 +56,7 @@ const processSteps = [
 // ─── Proof of Work data
 
 const dashboardStats = [
-  { value: "10", label: "Campaigns documented" },
+  { value: "Multiple", label: "Campaigns delivered" },
   { value: "5–20", label: "Team members per campaign" },
   { value: "300–4K+", label: "Average views per post" },
   { value: "55K+", label: "Peak reach, single pinned post" },
@@ -71,13 +71,15 @@ const campaignCards = [
     metric: "1K+ avg. views/post",
     duration: "2 months",
     focus: "Early-stage social proof, cross-community outreach on X, and support building launch traction.",
+    ongoing: false,
   },
   {
     label: "Campaign B — Web3 KOL",
     team: "12-person team",
     metric: "300+ avg. views/post",
-    duration: "1 year, ongoing",
+    duration: "1 year",
     focus: "X social proof, Telegram community engagement to reinforce confidence in calls, plus TikTok, Instagram, and Kick support.",
+    ongoing: true,
   },
   {
     label: "Campaign C — Web3 Creator",
@@ -85,6 +87,7 @@ const campaignCards = [
     metric: "1K+ avg. views/post",
     duration: "3 months",
     focus: "X social proof combined with regional-language Instagram growth and full account management.",
+    ongoing: false,
   },
   {
     label: "Campaign D — Web3 KOL",
@@ -92,6 +95,7 @@ const campaignCards = [
     metric: "1K+ avg. views/post",
     duration: "6 months",
     focus: "X interaction management and dedicated Telegram engagement to build community confidence around calls.",
+    ongoing: false,
   },
   {
     label: "Campaign E — Web3 KOL",
@@ -99,13 +103,15 @@ const campaignCards = [
     metric: "2K+ avg. views/post",
     duration: "1 month",
     focus: "Social proof and coordinated X interaction management.",
+    ongoing: false,
   },
   {
     label: "Campaign F — Web3 KOL",
     team: "10-person team",
     metric: "4K+ avg. views/post",
-    duration: "2 months, ongoing",
+    duration: "2 months",
     focus: "Social proof and coordinated X interaction management at higher engagement volume.",
+    ongoing: true,
   },
 ];
 
@@ -470,7 +476,22 @@ function ProofOfWork() {
                 <div className="flex flex-col gap-1.5">
                   <p className="text-sm" style={{ color: "#9AADA2" }}>{c.team}</p>
                   <p className="text-sm" style={{ color: "#9AADA2" }}>{c.metric}</p>
-                  <p className="text-sm" style={{ color: "#9AADA2" }}>{c.duration}</p>
+                  <div className="flex items-center gap-2">
+                    <p className="text-sm" style={{ color: "#9AADA2" }}>{c.duration}</p>
+                    {c.ongoing && (
+                      <span
+                        className="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-widest font-medium px-2 py-0.5 rounded-full"
+                        style={{
+                          color: "#20C66B",
+                          background: "rgba(32,198,107,0.08)",
+                          border: "1px solid rgba(32,198,107,0.25)",
+                        }}
+                      >
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#20C66B] pulse-dot" />
+                        Ongoing
+                      </span>
+                    )}
+                  </div>
                 </div>
                 <div style={{ borderTop: "1px solid #17352A", paddingTop: "1rem" }}>
                   <p className="text-xs leading-relaxed" style={{ color: "#9AADA2" }}>{c.focus}</p>
