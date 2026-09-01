@@ -1,8 +1,5 @@
 import { useState, useEffect, useRef } from "react";
 import logoSrc from "./imports/Gemini_Generated_Image_qmauhcqmauhcqmau.jpg";
-import imgCommunity from "./imports/image.png";
-import imgLaunch from "./imports/image-1.png";
-import imgFeedback from "./imports/image-2.png";
 
 // ─── Data
 
@@ -53,6 +50,77 @@ const processSteps = [
     n: "04",
     title: "Retention",
     desc: "We design for longevity. Communities that stay active after the launch are the ones worth building.",
+  },
+];
+
+// ─── Proof of Work data
+
+const dashboardStats = [
+  { value: "10", label: "Campaigns documented" },
+  { value: "5–20", label: "Team members per campaign" },
+  { value: "300–4K+", label: "Average views per post" },
+  { value: "55K+", label: "Peak reach, single pinned post" },
+  { value: "1mo–1yr", label: "Campaign durations" },
+  { value: "5", label: "Platforms supported" },
+];
+
+const campaignCards = [
+  {
+    label: "Campaign A — Web3 Project",
+    team: "20-person team",
+    metric: "1K+ avg. views/post",
+    duration: "2 months",
+    focus: "Early-stage social proof, cross-community outreach on X, and support building launch traction.",
+  },
+  {
+    label: "Campaign B — Web3 KOL",
+    team: "12-person team",
+    metric: "300+ avg. views/post",
+    duration: "1 year, ongoing",
+    focus: "X social proof, Telegram community engagement to reinforce confidence in calls, plus TikTok, Instagram, and Kick support.",
+  },
+  {
+    label: "Campaign C — Web3 Creator",
+    team: "12-person verified team",
+    metric: "1K+ avg. views/post",
+    duration: "3 months",
+    focus: "X social proof combined with regional-language Instagram growth and full account management.",
+  },
+  {
+    label: "Campaign D — Web3 KOL",
+    team: "10-person team",
+    metric: "1K+ avg. views/post",
+    duration: "6 months",
+    focus: "X interaction management and dedicated Telegram engagement to build community confidence around calls.",
+  },
+  {
+    label: "Campaign E — Web3 KOL",
+    team: "5-person team",
+    metric: "2K+ avg. views/post",
+    duration: "1 month",
+    focus: "Social proof and coordinated X interaction management.",
+  },
+  {
+    label: "Campaign F — Web3 KOL",
+    team: "10-person team",
+    metric: "4K+ avg. views/post",
+    duration: "2 months, ongoing",
+    focus: "Social proof and coordinated X interaction management at higher engagement volume.",
+  },
+];
+
+const platformCapabilities = [
+  {
+    platform: "X",
+    items: ["Social proof", "Replies", "Quotes", "Post interaction"],
+  },
+  {
+    platform: "Telegram",
+    items: ["Community engagement", "Conversation stimulation", "Positive reinforcement around calls", "Community confidence"],
+  },
+  {
+    platform: "Instagram / TikTok / Kick",
+    items: ["Social support", "Account growth and traction", "Content and community support"],
   },
 ];
 
@@ -335,228 +403,175 @@ function Hero() {
   );
 }
 
-// ─── Selected Work
+// ─── Proof of Work (replaces old Selected Work / WorkCard section)
 
-const workCards = [
-  {
-    title: "Community activation",
-    body: "Clear direction and structured support for active communities.",
-    tags: ["Community", "Strategy", "Coordination"],
-    label: "Details protected",
-    img: imgCommunity,
-    large: true,
-  },
-  {
-    title: "Live launch support",
-    body: "Timely support for announcements, live moments, and launch activity.",
-    tags: ["Launches", "Social", "Support"],
-    label: "Details protected",
-    img: imgLaunch,
-    large: false,
-  },
-  {
-    title: "Client feedback",
-    body: "Support built to keep conversation and content moving.",
-    tags: ["Content", "X", "Instagram"],
-    label: "Confidential work",
-    img: imgFeedback,
-    large: false,
-  },
-];
-
-function WorkCard({
-  card,
-  className = "",
-}: {
-  card: (typeof workCards)[number];
-  className?: string;
-}) {
-  return (
-    <div
-      className={`group relative rounded-2xl overflow-hidden flex flex-col cursor-default ${className}`}
-      style={{ border: "1px solid #17352A", background: "#0a1912" }}
-    >
-      {/* Lime line — expands on hover */}
-      <div
-        className="absolute bottom-0 left-0 h-[1.5px] w-0 group-hover:w-full z-20"
-        style={{
-          background: "#B6FF20",
-          transition: "width 0.55s cubic-bezier(0.16,1,0.3,1)",
-        }}
-      />
-
-      {/* Image area */}
-      <div className="relative overflow-hidden" style={{ flex: "1 1 0" }}>
-        <img
-          src={card.img}
-          alt={card.title}
-          className="w-full h-full object-cover object-top"
-          style={{
-            minHeight: card.large ? 340 : 220,
-            maxHeight: card.large ? 420 : 280,
-            transition: "transform 0.6s cubic-bezier(0.16,1,0.3,1)",
-          }}
-          onMouseEnter={e => { (e.currentTarget as HTMLImageElement).style.transform = "scale(1.04)"; }}
-          onMouseLeave={e => { (e.currentTarget as HTMLImageElement).style.transform = "scale(1)"; }}
-        />
-
-        {/* Dark green glass overlay */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background: "linear-gradient(to top, rgba(7,17,14,0.82) 0%, rgba(7,17,14,0.18) 60%, transparent 100%)",
-          }}
-        />
-
-        {/* Subtle lime glow on hover */}
-        <div
-          className="absolute inset-0 opacity-0 group-hover:opacity-100"
-          style={{
-            background: "radial-gradient(ellipse at 50% 100%, rgba(182,255,32,0.07) 0%, transparent 65%)",
-            transition: "opacity 0.4s ease",
-          }}
-        />
-
-        {/* Image label */}
-        <span
-          className="absolute bottom-3 left-3 text-[10px] uppercase tracking-widest font-medium px-2.5 py-1 rounded-full"
-          style={{
-            color: "#B6FF20",
-            background: "rgba(7,17,14,0.75)",
-            border: "1px solid rgba(182,255,32,0.2)",
-            backdropFilter: "blur(8px)",
-          }}
-        >
-          {card.label}
-        </span>
-      </div>
-
-      {/* Text area */}
-      <div className="p-6 flex flex-col gap-3" style={{ borderTop: "1px solid #17352A" }}>
-        <h3
-          className="font-display font-semibold tracking-tight"
-          style={{ color: "#F2F7F3", fontSize: card.large ? "1.25rem" : "1.05rem" }}
-        >
-          {card.title}
-        </h3>
-        <p className="text-sm leading-relaxed" style={{ color: "#9AADA2" }}>{card.body}</p>
-
-        {/* Tags + lime arrow */}
-        <div className="flex items-center justify-between gap-3 mt-1">
-          <div className="flex flex-wrap gap-1.5">
-            {card.tags.map(tag => (
-              <span
-                key={tag}
-                className="text-[10px] uppercase tracking-widest font-medium px-2.5 py-1 rounded-full"
-                style={{ color: "#9AADA2", border: "1px solid #17352A" }}
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-          {/* Arrow — lights up on hover */}
-          <div
-            className="flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center"
-            style={{
-              border: "1px solid #17352A",
-              transition: "border-color 0.25s, background 0.25s",
-            }}
-          >
-            <svg
-              width="12"
-              height="12"
-              fill="none"
-              viewBox="0 0 12 12"
-              className="group-hover:[&_path]:stroke-[#B6FF20]"
-            >
-              <path
-                d="M2 10L10 2M10 2H5M10 2v5"
-                stroke="#9AADA2"
-                strokeWidth="1.3"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                style={{ transition: "stroke 0.25s" }}
-              />
-            </svg>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function SelectedWork() {
+function ProofOfWork() {
   const { ref, inView } = useInView();
 
   return (
     <section id="selected-work" className="py-28 px-6" ref={ref}>
-      <div
-        className={`max-w-7xl mx-auto transition-all duration-700 ${
-          inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-        }`}
-      >
+      <div className={`max-w-7xl mx-auto transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
           <div>
-            <p
-              className="text-xs uppercase tracking-widest font-semibold mb-4"
-              style={{ color: "#B6FF20" }}
-            >
-              Selected work
+            <p className="text-xs uppercase tracking-widest font-semibold mb-4" style={{ color: "#B6FF20" }}>
+              Proof of work
             </p>
-            <h2
-              className="font-display font-bold text-4xl md:text-5xl tracking-tight leading-tight"
-              style={{ color: "#F2F7F3" }}
-            >
-              Work that moves
+            <h2 className="font-display font-bold text-4xl md:text-5xl tracking-tight leading-tight" style={{ color: "#F2F7F3" }}>
+              A track record built
               <br />
-              <span className="gradient-text">communities.</span>
+              <span className="gradient-text">on real execution.</span>
             </h2>
           </div>
-          <p className="text-sm max-w-xs leading-relaxed" style={{ color: "#9AADA2" }}>
-            A selection of community support, launch activity, and social coordination. Client details are protected.
+          <p className="text-sm max-w-sm leading-relaxed" style={{ color: "#9AADA2" }}>
+            A selection of campaigns we&rsquo;ve supported across Web3 — spanning social proof, X engagement, community activation, and cross-platform support. What follows is the infrastructure and team behind those results, not a service you run yourself.
           </p>
         </div>
 
-        {/* Staggered editorial grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-          {/* Card 1 — large, spans 2 rows on the left */}
-          <div
-            className="lg:col-span-2 lg:row-span-2"
-            style={{
-              opacity: inView ? 1 : 0,
-              transform: inView ? "none" : "translateY(16px)",
-              transition: "opacity 0.6s 0.05s, transform 0.6s 0.05s",
-            }}
-          >
-            <WorkCard card={workCards[0]} className="h-full" />
-          </div>
+        {/* 1. Aggregate dashboard */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-20">
+          {dashboardStats.map((stat, i) => (
+            <div
+              key={i}
+              className="glass rounded-2xl p-5 flex flex-col gap-1.5"
+              style={{
+                opacity: inView ? 1 : 0,
+                transform: inView ? "none" : "translateY(10px)",
+                transition: `opacity 0.5s ${i * 0.06}s, transform 0.5s ${i * 0.06}s`,
+              }}
+            >
+              <p className="font-display font-extrabold text-2xl md:text-3xl tracking-tight" style={{ color: "#B6FF20" }}>
+                {stat.value}
+              </p>
+              <p className="text-xs leading-snug" style={{ color: "#9AADA2" }}>{stat.label}</p>
+            </div>
+          ))}
+        </div>
 
-          {/* Card 2 */}
-          <div
-            style={{
-              opacity: inView ? 1 : 0,
-              transform: inView ? "none" : "translateY(16px)",
-              transition: "opacity 0.6s 0.18s, transform 0.6s 0.18s",
-            }}
-          >
-            <WorkCard card={workCards[1]} className="h-full" />
-          </div>
-
-          {/* Card 3 */}
-          <div
-            style={{
-              opacity: inView ? 1 : 0,
-              transform: inView ? "none" : "translateY(16px)",
-              transition: "opacity 0.6s 0.3s, transform 0.6s 0.3s",
-            }}
-          >
-            <WorkCard card={workCards[2]} className="h-full" />
+        {/* 2. Campaign cards (anonymized) */}
+        <div className="mb-20">
+          <p className="text-xs uppercase tracking-widest font-medium mb-6" style={{ color: "#20C66B" }}>
+            Campaign snapshots
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {campaignCards.map((c, i) => (
+              <div
+                key={i}
+                className="glass rounded-2xl p-7 flex flex-col gap-4"
+                style={{
+                  opacity: inView ? 1 : 0,
+                  transform: inView ? "none" : "translateY(10px)",
+                  transition: `opacity 0.5s ${0.2 + i * 0.1}s, transform 0.5s ${0.2 + i * 0.1}s`,
+                }}
+              >
+                <p className="font-display font-semibold text-lg tracking-tight" style={{ color: "#F2F7F3" }}>
+                  {c.label}
+                </p>
+                <div className="flex flex-col gap-1.5">
+                  <p className="text-sm" style={{ color: "#9AADA2" }}>{c.team}</p>
+                  <p className="text-sm" style={{ color: "#9AADA2" }}>{c.metric}</p>
+                  <p className="text-sm" style={{ color: "#9AADA2" }}>{c.duration}</p>
+                </div>
+                <div style={{ borderTop: "1px solid #17352A", paddingTop: "1rem" }}>
+                  <p className="text-xs leading-relaxed" style={{ color: "#9AADA2" }}>{c.focus}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 
+        {/* 3. Cross-platform capability */}
+        <div className="mb-20">
+          <p className="text-xs uppercase tracking-widest font-medium mb-6" style={{ color: "#20C66B" }}>
+            Cross-platform capability
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {platformCapabilities.map((p, i) => (
+              <div
+                key={i}
+                className="rounded-2xl p-7"
+                style={{
+                  border: "1px solid #17352A",
+                  opacity: inView ? 1 : 0,
+                  transform: inView ? "none" : "translateY(10px)",
+                  transition: `opacity 0.5s ${0.4 + i * 0.1}s, transform 0.5s ${0.4 + i * 0.1}s`,
+                }}
+              >
+                <p className="font-display font-semibold text-base mb-4" style={{ color: "#B6FF20" }}>{p.platform}</p>
+                <ul className="flex flex-col gap-2">
+                  {p.items.map((item) => (
+                    <li key={item} className="text-sm flex items-start gap-2" style={{ color: "#9AADA2" }}>
+                      <span className="w-1 h-1 rounded-full flex-shrink-0 mt-2" style={{ background: "#20C66B" }} />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* 4. Mini case study (anonymized) */}
+        <div className="mb-16">
+          <p className="text-xs uppercase tracking-widest font-medium mb-6" style={{ color: "#20C66B" }}>
+            Case snapshot
+          </p>
+          <div className="glass-bright rounded-2xl md:rounded-3xl p-10 md:p-14">
+            <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-10">
+              <div className="flex flex-col gap-5">
+                <h3 className="font-display font-semibold text-2xl tracking-tight" style={{ color: "#F2F7F3" }}>
+                  Building early social proof for a Web3 launch
+                </h3>
+                <div className="flex flex-col gap-3">
+                  <div>
+                    <p className="text-xs uppercase tracking-widest mb-1" style={{ color: "#17352A" }}>Objective</p>
+                    <p className="text-sm leading-relaxed" style={{ color: "#9AADA2" }}>
+                      Build social proof during the early launch stage of a Web3 project.
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-xs uppercase tracking-widest mb-1" style={{ color: "#17352A" }}>Execution</p>
+                    <p className="text-sm leading-relaxed" style={{ color: "#9AADA2" }}>
+                      Coordinated X engagement, structured community outreach, and consistent quote activity around key posts.
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-xs uppercase tracking-widest mb-1" style={{ color: "#17352A" }}>Outcome</p>
+                    <p className="text-sm leading-relaxed" style={{ color: "#9AADA2" }}>
+                      Established early traction and generated significant visibility around the project&rsquo;s content.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className="flex flex-col justify-center gap-5" style={{ borderLeft: "1px solid #17352A", paddingLeft: "2rem" }}>
+                <div>
+                  <p className="font-display font-extrabold text-3xl" style={{ color: "#B6FF20" }}>10-person</p>
+                  <p className="text-xs mt-1" style={{ color: "#9AADA2" }}>Team deployed</p>
+                </div>
+                <div>
+                  <p className="font-display font-extrabold text-3xl" style={{ color: "#B6FF20" }}>1K+</p>
+                  <p className="text-xs mt-1" style={{ color: "#9AADA2" }}>Average views per post</p>
+                </div>
+                <div>
+                  <p className="font-display font-extrabold text-3xl" style={{ color: "#B6FF20" }}>55K+</p>
+                  <p className="text-xs mt-1" style={{ color: "#9AADA2" }}>Views on a single pinned post</p>
+                </div>
+                <div>
+                  <p className="font-display font-extrabold text-3xl" style={{ color: "#B6FF20" }}>1 month</p>
+                  <p className="text-xs mt-1" style={{ color: "#9AADA2" }}>Campaign duration</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Confidentiality note */}
+        <p className="text-xs leading-relaxed max-w-2xl mb-14" style={{ color: "#17352A" }}>
+          Client information anonymized for confidentiality. Figures shown reflect documented campaign performance and are not attributed to specific individuals or projects.
+        </p>
+
         {/* CTA */}
-        <div className="flex justify-center mt-14">
+        <div className="flex justify-center">
           <a
             href="#contact"
             className="btn-primary px-8 py-3.5 rounded-xl text-[15px] inline-flex items-center gap-2.5 font-semibold"
@@ -572,7 +587,7 @@ function SelectedWork() {
   );
 }
 
-// ─── Services (merged — alternating row layout, replaces old Services + What We Build)
+// ─── Services (merged — alternating row layout)
 
 function Services() {
   const { ref, inView } = useInView();
@@ -647,7 +662,7 @@ function Services() {
   );
 }
 
-// ─── Process (connected horizontal timeline — replaces old 4-card grid)
+// ─── Process (connected horizontal timeline)
 
 function Process() {
   const { ref, inView } = useInView();
@@ -900,7 +915,7 @@ export default function App() {
       <Nav />
       <main>
         <Hero />
-        <SelectedWork />
+        <ProofOfWork />
         <Services />
         <Process />
         <About />
