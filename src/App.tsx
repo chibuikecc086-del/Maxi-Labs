@@ -366,19 +366,19 @@ function Hero() {
 
           {/* Small credibility row */}
           <div
-            className="animate-fade-up animate-delay-4 flex items-center gap-6 pt-2"
+            className="animate-fade-up animate-delay-4 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 pt-2"
             style={{ borderTop: "1px solid #17352A", marginTop: "0.5rem", paddingTop: "1.5rem", width: "100%" }}
           >
             <div>
               <p className="font-display font-bold text-2xl" style={{ color: "#F2F7F3" }}>Web3</p>
               <p className="text-xs mt-0.5" style={{ color: "#9AADA2" }}>Native operators</p>
             </div>
-            <div className="w-px h-8" style={{ background: "#17352A" }} />
+            <div className="hidden sm:block w-px h-8" style={{ background: "#17352A" }} />
             <div>
               <p className="font-display font-bold text-2xl" style={{ color: "#F2F7F3" }}>Full-cycle</p>
               <p className="text-xs mt-0.5" style={{ color: "#9AADA2" }}>Launch to retention</p>
             </div>
-            <div className="w-px h-8" style={{ background: "#17352A" }} />
+            <div className="hidden sm:block w-px h-8" style={{ background: "#17352A" }} />
             <div>
               <p className="font-display font-bold text-2xl" style={{ color: "#F2F7F3" }}>Selective</p>
               <p className="text-xs mt-0.5" style={{ color: "#9AADA2" }}>Curated client roster</p>
@@ -435,11 +435,11 @@ function ProofOfWork() {
         </div>
 
         {/* 1. Aggregate dashboard */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-20">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-4 mb-20">
           {dashboardStats.map((stat, i) => (
             <div
               key={i}
-              className="glass rounded-2xl p-5 flex flex-col gap-1.5"
+              className="glass rounded-2xl p-4 md:p-5 flex flex-col gap-1.5"
               style={{
                 opacity: inView ? 1 : 0,
                 transform: inView ? "none" : "translateY(10px)",
