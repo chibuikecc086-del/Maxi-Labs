@@ -456,9 +456,15 @@ function ProofOfWork() {
 
         {/* 2. Campaign cards (anonymized) */}
         <div className="mb-20">
-          <p className="text-xs uppercase tracking-widest font-medium mb-6" style={{ color: "#20C66B" }}>
-            Campaign snapshots
-          </p>
+          <div className="flex items-center justify-between gap-4 mb-6">
+            <p className="text-xs uppercase tracking-widest font-medium" style={{ color: "#20C66B" }}>
+              Campaign snapshots
+            </p>
+            <span className="text-[11px] flex items-center gap-1.5" style={{ color: "#17352A" }}>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#20C66B] pulse-dot" />
+              Updated as engagements complete
+            </span>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {campaignCards.map((c, i) => (
               <div
@@ -478,7 +484,7 @@ function ProofOfWork() {
                   <p className="text-sm" style={{ color: "#9AADA2" }}>{c.metric}</p>
                   <div className="flex items-center gap-2">
                     <p className="text-sm" style={{ color: "#9AADA2" }}>{c.duration}</p>
-                    {c.ongoing && (
+                    {c.ongoing ? (
                       <span
                         className="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-widest font-medium px-2 py-0.5 rounded-full"
                         style={{
@@ -489,6 +495,20 @@ function ProofOfWork() {
                       >
                         <span className="w-1.5 h-1.5 rounded-full bg-[#20C66B] pulse-dot" />
                         Ongoing
+                      </span>
+                    ) : (
+                      <span
+                        className="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-widest font-medium px-2 py-0.5 rounded-full"
+                        style={{
+                          color: "#B6FF20",
+                          background: "rgba(182,255,32,0.06)",
+                          border: "1px solid rgba(182,255,32,0.2)",
+                        }}
+                      >
+                        <svg width="9" height="9" viewBox="0 0 12 12" fill="none">
+                          <path d="M2.5 6.2l2.3 2.3 4.7-4.7" stroke="#B6FF20" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                        Completed
                       </span>
                     )}
                   </div>
