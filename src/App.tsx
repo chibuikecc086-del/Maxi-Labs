@@ -6,25 +6,6 @@ import imgFeedback from "./imports/image-2.png";
 
 // ─── Data
 
-const services = [
-  {
-    title: "Community Architecture",
-    desc: "We design Discord and Telegram ecosystems from first principles: roles, engagement loops, moderation systems, and ambassador programs that sustain themselves.",
-  },
-  {
-    title: "Social Presence Engineering",
-    desc: "Thread strategy, content cadence, Twitter/X growth systems, and narrative frameworks that make your project the one worth paying attention to.",
-  },
-  {
-    title: "KOL & Influencer Ops",
-    desc: "A curated network of authentic Web3 creators. We handle sourcing, briefing, coordination, and performance tracking. No spray and pray.",
-  },
-  {
-    title: "Launch Runway Strategy",
-    desc: "End-to-end pre-TGE or mint momentum building. 6 to 12 week campaign architecture designed to create organic demand on day one.",
-  },
-];
-
 const capabilities = [
   {
     n: "01",
@@ -272,43 +253,6 @@ function Hero() {
   );
 }
 
-// ─── Services
-
-function Services() {
-  const { ref, inView } = useInView();
-  return (
-    <section id="services" className="py-28 px-6" ref={ref}>
-      <div className={`max-w-7xl mx-auto transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
-          <div>
-            <p className="text-xs uppercase tracking-widest font-medium mb-4" style={{ color: "#20C66B" }}>What we do</p>
-            <h2 className="font-display font-bold text-4xl md:text-5xl tracking-tight leading-tight" style={{ color: "#F2F7F3" }}>
-              Growth systems,
-              <br />
-              <span className="gradient-text-subtle">not one-off campaigns.</span>
-            </h2>
-          </div>
-          <p className="text-sm max-w-xs leading-relaxed" style={{ color: "#9AADA2" }}>
-            We build repeatable growth infrastructure. The kind that compounds over time and survives market cycles.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {services.map((s, i) => (
-            <div key={i} className="glass rounded-2xl p-8 hover-lift cursor-default group">
-              <p className="text-xs font-medium mb-5 tabular-nums" style={{ color: "#17352A" }}>0{i + 1}</p>
-              <h3 className="font-display font-semibold text-xl mb-3 tracking-tight transition-colors group-hover:text-[#B6FF20]" style={{ color: "#F2F7F3" }}>
-                {s.title}
-              </h3>
-              <p className="text-sm leading-relaxed" style={{ color: "#9AADA2" }}>{s.desc}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 // ─── Selected Work
 
 const workCards = [
@@ -546,54 +490,72 @@ function SelectedWork() {
   );
 }
 
-// ─── What We Build
+// ─── Services (merged — alternating row layout, replaces old Services + What We Build)
 
-function WhatWeBuild() {
+function Services() {
   const { ref, inView } = useInView();
 
   return (
-    <section id="work" className="py-28 px-6" ref={ref}>
+    <section id="services" className="py-28 px-6" ref={ref}>
       <div className={`max-w-7xl mx-auto transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-20">
           <div>
-            <p className="text-xs uppercase tracking-widest font-medium mb-4" style={{ color: "#20C66B" }}>Capabilities</p>
+            <p className="text-xs uppercase tracking-widest font-medium mb-4" style={{ color: "#20C66B" }}>What we do</p>
             <h2 className="font-display font-bold text-4xl md:text-5xl tracking-tight leading-tight" style={{ color: "#F2F7F3" }}>
-              What we
+              Growth systems,
               <br />
-              <span className="gradient-text">build.</span>
+              <span className="gradient-text-subtle">not one-off campaigns.</span>
             </h2>
           </div>
           <p className="text-sm max-w-xs leading-relaxed" style={{ color: "#9AADA2" }}>
-            Four core practice areas. Each one delivered as a system, not a one-time service.
+            We build repeatable growth infrastructure. The kind that compounds over time and survives market cycles.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {/* Alternating rows instead of a card grid */}
+        <div className="flex flex-col">
           {capabilities.map((c, i) => (
             <div
               key={i}
-              className="glass rounded-2xl p-8 hover-lift flex flex-col gap-6"
+              className={`flex flex-col md:flex-row gap-8 md:gap-16 py-10 ${
+                i !== capabilities.length - 1 ? "border-b" : ""
+              } ${i % 2 === 1 ? "md:flex-row-reverse" : ""}`}
               style={{
+                borderColor: "#17352A",
                 opacity: inView ? 1 : 0,
-                transform: inView ? "none" : "translateY(12px)",
-                transition: `opacity 0.5s ${i * 0.08}s, transform 0.5s ${i * 0.08}s`,
+                transform: inView ? "none" : "translateY(14px)",
+                transition: `opacity 0.55s ${i * 0.08}s, transform 0.55s ${i * 0.08}s`,
               }}
             >
-              <div>
-                <p className="text-xs font-medium tabular-nums mb-3" style={{ color: "#17352A" }}>{c.n}</p>
-                <h3 className="font-display font-semibold text-xl mb-3 tracking-tight" style={{ color: "#F2F7F3" }}>{c.title}</h3>
-                <p className="text-sm leading-relaxed" style={{ color: "#9AADA2" }}>{c.desc}</p>
+              {/* Big outlined number */}
+              <div className="md:w-1/4 flex-shrink-0">
+                <p
+                  className="font-display font-extrabold text-6xl md:text-7xl tabular-nums leading-none"
+                  style={{ color: "transparent", WebkitTextStroke: "1.5px #1e4235" }}
+                >
+                  {c.n}
+                </p>
               </div>
-              <div className="flex flex-wrap gap-2 mt-auto">
-                {c.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="text-xs rounded-full px-3 py-1 border"
-                    style={{ color: "#9AADA2", borderColor: "#17352A" }}
-                  >
-                    {tag}
-                  </span>
-                ))}
+
+              {/* Content */}
+              <div className="md:w-3/4 flex flex-col gap-4">
+                <h3 className="font-display font-semibold text-2xl md:text-[28px] tracking-tight" style={{ color: "#F2F7F3" }}>
+                  {c.title}
+                </h3>
+                <p className="text-sm md:text-base leading-relaxed max-w-2xl" style={{ color: "#9AADA2" }}>
+                  {c.desc}
+                </p>
+                <div className="flex flex-wrap gap-2 mt-2">
+                  {c.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="text-xs rounded-full px-3 py-1 border"
+                      style={{ color: "#9AADA2", borderColor: "#17352A" }}
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           ))}
@@ -603,7 +565,7 @@ function WhatWeBuild() {
   );
 }
 
-// ─── Process
+// ─── Process (connected horizontal timeline — replaces old 4-card grid)
 
 function Process() {
   const { ref, inView } = useInView();
@@ -611,7 +573,7 @@ function Process() {
   return (
     <section id="process" className="py-28 px-6" ref={ref}>
       <div className={`max-w-7xl mx-auto transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-        <div className="mb-16">
+        <div className="mb-20">
           <p className="text-xs uppercase tracking-widest font-medium mb-4" style={{ color: "#20C66B" }}>How we work</p>
           <h2 className="font-display font-bold text-4xl md:text-5xl tracking-tight leading-tight" style={{ color: "#F2F7F3" }}>
             A process built
@@ -620,22 +582,58 @@ function Process() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          {processSteps.map((step, i) => (
-            <div
-              key={i}
-              className="glass rounded-2xl p-8 flex flex-col gap-4"
-              style={{
-                opacity: inView ? 1 : 0,
-                transform: inView ? "none" : "translateY(12px)",
-                transition: `opacity 0.6s ${i * 0.1}s, transform 0.6s ${i * 0.1}s`,
-              }}
-            >
-              <p className="text-xs tabular-nums font-medium" style={{ color: "#17352A" }}>{step.n}</p>
-              <h3 className="font-display font-semibold text-lg tracking-tight" style={{ color: "#F2F7F3" }}>{step.title}</h3>
-              <p className="text-sm leading-relaxed" style={{ color: "#9AADA2" }}>{step.desc}</p>
-            </div>
-          ))}
+        {/* Connected timeline */}
+        <div className="relative">
+          {/* Connecting line — desktop only */}
+          <div
+            className="hidden md:block absolute top-[13px] left-0 right-0 h-px"
+            style={{ background: "#17352A" }}
+          />
+          <div
+            className="hidden md:block absolute top-[13px] left-0 h-px"
+            style={{
+              background: "linear-gradient(90deg, #20C66B, #B6FF20)",
+              width: inView ? "100%" : "0%",
+              transition: "width 1.1s cubic-bezier(0.16,1,0.3,1) 0.2s",
+            }}
+          />
+
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8">
+            {processSteps.map((step, i) => (
+              <div
+                key={i}
+                className="flex flex-col gap-4"
+                style={{
+                  opacity: inView ? 1 : 0,
+                  transform: inView ? "none" : "translateY(10px)",
+                  transition: `opacity 0.5s ${0.3 + i * 0.12}s, transform 0.5s ${0.3 + i * 0.12}s`,
+                }}
+              >
+                {/* Node on the line */}
+                <div
+                  className="relative z-10 w-[26px] h-[26px] rounded-full flex items-center justify-center flex-shrink-0"
+                  style={{
+                    background: "#07110E",
+                    border: `1.5px solid ${i === 0 ? "#B6FF20" : "#17352A"}`,
+                  }}
+                >
+                  <span
+                    className="text-[10px] font-bold tabular-nums"
+                    style={{ color: i === 0 ? "#B6FF20" : "#9AADA2" }}
+                  >
+                    {step.n}
+                  </span>
+                </div>
+
+                <h3 className="font-display font-semibold text-lg tracking-tight" style={{ color: "#F2F7F3" }}>
+                  {step.title}
+                </h3>
+                <p className="text-sm leading-relaxed" style={{ color: "#9AADA2" }}>
+                  {step.desc}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -822,7 +820,6 @@ export default function App() {
         <Hero />
         <SelectedWork />
         <Services />
-        <WhatWeBuild />
         <Process />
         <About />
         <Contact />
