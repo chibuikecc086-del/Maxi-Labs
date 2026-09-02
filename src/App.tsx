@@ -70,7 +70,7 @@ const campaignCards = [
     team: "20-person team",
     metric: "1K+ avg. views/post",
     duration: "2 months",
-    focus: "Early-stage social proof, cross-community outreach on X, and support building launch traction.",
+    focus: "Early-stage community engagement and cross-platform outreach on X to support launch traction.",
     ongoing: false,
   },
   {
@@ -78,7 +78,7 @@ const campaignCards = [
     team: "12-person team",
     metric: "300+ avg. views/post",
     duration: "1 year",
-    focus: "X social proof, Telegram community engagement to reinforce confidence in calls, plus TikTok, Instagram, and Kick support.",
+    focus: "Active engagement on X, structured Telegram community management, plus cross-platform support across TikTok, Instagram, and Kick.",
     ongoing: true,
   },
   {
@@ -86,7 +86,7 @@ const campaignCards = [
     team: "12-person verified team",
     metric: "1K+ avg. views/post",
     duration: "3 months",
-    focus: "X social proof combined with regional-language Instagram growth and full account management.",
+    focus: "Active X engagement combined with regional-language Instagram growth and full account management.",
     ongoing: false,
   },
   {
@@ -94,7 +94,7 @@ const campaignCards = [
     team: "10-person team",
     metric: "1K+ avg. views/post",
     duration: "6 months",
-    focus: "X interaction management and dedicated Telegram engagement to build community confidence around calls.",
+    focus: "X interaction management and dedicated Telegram community engagement.",
     ongoing: false,
   },
   {
@@ -102,7 +102,7 @@ const campaignCards = [
     team: "5-person team",
     metric: "2K+ avg. views/post",
     duration: "1 month",
-    focus: "Social proof and coordinated X interaction management.",
+    focus: "Coordinated X engagement and interaction management.",
     ongoing: false,
   },
   {
@@ -110,7 +110,7 @@ const campaignCards = [
     team: "10-person team",
     metric: "4K+ avg. views/post",
     duration: "2 months",
-    focus: "Social proof and coordinated X interaction management at higher engagement volume.",
+    focus: "Coordinated X engagement and interaction management at higher volume.",
     ongoing: true,
   },
 ];
@@ -118,15 +118,15 @@ const campaignCards = [
 const platformCapabilities = [
   {
     platform: "X",
-    items: ["Social proof", "Replies", "Quotes", "Post interaction"],
+    items: ["Active engagement", "Replies", "Quotes", "Post interaction"],
   },
   {
     platform: "Telegram",
-    items: ["Community engagement", "Conversation stimulation", "Positive reinforcement around calls", "Community confidence"],
+    items: ["Community engagement", "Active conversation participation", "Structured community management", "Consistent community presence"],
   },
   {
     platform: "Instagram / TikTok / Kick",
-    items: ["Social support", "Account growth and traction", "Content and community support"],
+    items: ["Engagement support", "Account growth and traction", "Content and community support"],
   },
 ];
 
@@ -561,25 +561,25 @@ function ProofOfWork() {
             <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-10">
               <div className="flex flex-col gap-5">
                 <h3 className="font-display font-semibold text-2xl tracking-tight" style={{ color: "#F2F7F3" }}>
-                  Building early social proof for a Web3 launch
+                  Building early visibility for a Web3 launch
                 </h3>
                 <div className="flex flex-col gap-3">
                   <div>
                     <p className="text-xs uppercase tracking-widest mb-1" style={{ color: "#17352A" }}>Objective</p>
                     <p className="text-sm leading-relaxed" style={{ color: "#9AADA2" }}>
-                      Build social proof during the early launch stage of a Web3 project.
+                      Build early community visibility for a Web3 project during its launch stage.
                     </p>
                   </div>
                   <div>
                     <p className="text-xs uppercase tracking-widest mb-1" style={{ color: "#17352A" }}>Execution</p>
                     <p className="text-sm leading-relaxed" style={{ color: "#9AADA2" }}>
-                      Coordinated X engagement, structured community outreach, and consistent quote activity around key posts.
+                      Coordinated engagement on X, structured community outreach, and consistent quote activity around key posts.
                     </p>
                   </div>
                   <div>
                     <p className="text-xs uppercase tracking-widest mb-1" style={{ color: "#17352A" }}>Outcome</p>
                     <p className="text-sm leading-relaxed" style={{ color: "#9AADA2" }}>
-                      Established early traction and generated significant visibility around the project&rsquo;s content.
+                      Established early visibility and reach around the project&rsquo;s launch content.
                     </p>
                   </div>
                 </div>
