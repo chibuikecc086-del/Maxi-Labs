@@ -61,8 +61,9 @@ const dashboardStats = [
   { value: "300–4K+", label: "Average views per post" },
   { value: "55K+", label: "Peak reach, single pinned post" },
   { value: "1mo–1yr", label: "Campaign durations" },
-  { value: "5", label: "Platforms supported" },
 ];
+
+const platformsList = ["X", "Telegram", "Instagram", "TikTok", "Kick"];
 
 const campaignCards = [
   {
@@ -452,6 +453,29 @@ function ProofOfWork() {
               <p className="text-xs leading-snug" style={{ color: "#9AADA2" }}>{stat.label}</p>
             </div>
           ))}
+
+          {/* Platform coverage card — names instead of a count */}
+          <div
+            className="glass rounded-2xl p-4 md:p-5 flex flex-col gap-2.5"
+            style={{
+              opacity: inView ? 1 : 0,
+              transform: inView ? "none" : "translateY(10px)",
+              transition: `opacity 0.5s ${dashboardStats.length * 0.06}s, transform 0.5s ${dashboardStats.length * 0.06}s`,
+            }}
+          >
+            <p className="text-xs leading-snug mb-0.5" style={{ color: "#9AADA2" }}>Platform coverage</p>
+            <div className="flex flex-wrap gap-1.5">
+              {platformsList.map((p) => (
+                <span
+                  key={p}
+                  className="text-[11px] font-medium px-2 py-1 rounded-full"
+                  style={{ color: "#B6FF20", background: "rgba(182,255,32,0.06)", border: "1px solid rgba(182,255,32,0.2)" }}
+                >
+                  {p}
+                </span>
+              ))}
+            </div>
+          </div>
         </div>
 
         {/* 2. Campaign cards (anonymized) */}
