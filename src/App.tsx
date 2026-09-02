@@ -60,7 +60,7 @@ const dashboardStats = [
   { value: "5–20", label: "Team members per campaign" },
   { value: "300–4K+", label: "Average views per post" },
   { value: "55K+", label: "Peak reach, single pinned post" },
-  { value: "1mo–1yr", label: "Campaign durations" },
+  { value: "Short–Long term", label: "Engagement lengths" },
 ];
 
 const platformsList = ["X", "Telegram", "Instagram", "TikTok", "Kick"];
@@ -70,7 +70,7 @@ const campaignCards = [
     label: "Campaign A — Web3 Project",
     team: "20-person team",
     metric: "1K+ avg. views/post",
-    duration: "2 months",
+    duration: "Short-term engagement",
     focus: "Early-stage community engagement and cross-platform outreach on X to support launch traction.",
     ongoing: false,
   },
@@ -78,7 +78,7 @@ const campaignCards = [
     label: "Campaign B — Web3 KOL",
     team: "12-person team",
     metric: "300+ avg. views/post",
-    duration: "1 year",
+    duration: "Long-term partnership",
     focus: "Active engagement on X, structured Telegram community management, plus cross-platform support across TikTok, Instagram, and Kick.",
     ongoing: true,
   },
@@ -86,7 +86,7 @@ const campaignCards = [
     label: "Campaign C — Web3 Creator",
     team: "12-person verified team",
     metric: "1K+ avg. views/post",
-    duration: "3 months",
+    duration: "Extended engagement",
     focus: "Active X engagement combined with regional-language Instagram growth and full account management.",
     ongoing: false,
   },
@@ -94,7 +94,7 @@ const campaignCards = [
     label: "Campaign D — Web3 KOL",
     team: "10-person team",
     metric: "1K+ avg. views/post",
-    duration: "6 months",
+    duration: "Extended engagement",
     focus: "X interaction management and dedicated Telegram community engagement.",
     ongoing: false,
   },
@@ -102,7 +102,7 @@ const campaignCards = [
     label: "Campaign E — Web3 KOL",
     team: "5-person team",
     metric: "2K+ avg. views/post",
-    duration: "1 month",
+    duration: "Short-term engagement",
     focus: "Coordinated X engagement and interaction management.",
     ongoing: false,
   },
@@ -110,7 +110,7 @@ const campaignCards = [
     label: "Campaign F — Web3 KOL",
     team: "10-person team",
     metric: "4K+ avg. views/post",
-    duration: "2 months",
+    duration: "Short-term engagement",
     focus: "Coordinated X engagement and interaction management at higher volume.",
     ongoing: true,
   },
@@ -622,8 +622,8 @@ function ProofOfWork() {
                   <p className="text-xs mt-1" style={{ color: "#9AADA2" }}>Views on a single pinned post</p>
                 </div>
                 <div>
-                  <p className="font-display font-extrabold text-3xl" style={{ color: "#B6FF20" }}>1 month</p>
-                  <p className="text-xs mt-1" style={{ color: "#9AADA2" }}>Campaign duration</p>
+                  <p className="font-display font-extrabold text-3xl" style={{ color: "#B6FF20" }}>Short-term</p>
+                  <p className="text-xs mt-1" style={{ color: "#9AADA2" }}>Engagement length</p>
                 </div>
               </div>
             </div>
