@@ -67,7 +67,7 @@ const platformsList = ["X", "Telegram", "Instagram", "TikTok", "Kick"];
 
 const campaignCards = [
   {
-    label: "Campaign A — Web3 Project",
+    label: "Campaign Alpha — Web3 Project",
     team: "20-person team",
     metric: "1K+ avg. views/post",
     duration: "Short-term engagement",
@@ -75,7 +75,7 @@ const campaignCards = [
     ongoing: false,
   },
   {
-    label: "Campaign B — Web3 KOL",
+    label: "Campaign Beta — Web3 KOL",
     team: "12-person team",
     metric: "300+ avg. views/post",
     duration: "Long-term partnership",
@@ -83,7 +83,7 @@ const campaignCards = [
     ongoing: true,
   },
   {
-    label: "Campaign C — Web3 Creator",
+    label: "Campaign Gamma — Web3 Creator",
     team: "12-person verified team",
     metric: "1K+ avg. views/post",
     duration: "Extended engagement",
@@ -91,7 +91,7 @@ const campaignCards = [
     ongoing: false,
   },
   {
-    label: "Campaign D — Web3 KOL",
+    label: "Campaign Delta — Web3 KOL",
     team: "10-person team",
     metric: "1K+ avg. views/post",
     duration: "Extended engagement",
@@ -99,7 +99,7 @@ const campaignCards = [
     ongoing: false,
   },
   {
-    label: "Campaign E — Web3 KOL",
+    label: "Campaign Epsilon — Web3 KOL",
     team: "5-person team",
     metric: "2K+ avg. views/post",
     duration: "Short-term engagement",
@@ -107,7 +107,7 @@ const campaignCards = [
     ongoing: false,
   },
   {
-    label: "Campaign F — Web3 KOL",
+    label: "Campaign Zeta — Web3 KOL",
     team: "10-person team",
     metric: "4K+ avg. views/post",
     duration: "Short-term engagement",
