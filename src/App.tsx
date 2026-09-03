@@ -60,7 +60,7 @@ const dashboardStats = [
   { value: "5–20", label: "Team members per campaign" },
   { value: "300–4K+", label: "Average views per post" },
   { value: "55K+", label: "Peak reach, single pinned post" },
-  { value: "Short–Long term", label: "Engagement lengths" },
+  { value: "Flexible", label: "Engagement model" },
 ];
 
 const platformsList = ["X", "Telegram", "Instagram", "TikTok", "Kick"];
@@ -70,7 +70,6 @@ const campaignCards = [
     label: "Campaign Alpha — Web3 Project",
     team: "20-person team",
     metric: "1K+ avg. views/post",
-    duration: "Short-term engagement",
     focus: "Early-stage community engagement and cross-platform outreach on X to support launch traction.",
     ongoing: false,
   },
@@ -78,7 +77,6 @@ const campaignCards = [
     label: "Campaign Beta — Web3 KOL",
     team: "12-person team",
     metric: "300+ avg. views/post",
-    duration: "Long-term partnership",
     focus: "Active engagement on X, structured Telegram community management, plus cross-platform support across TikTok, Instagram, and Kick.",
     ongoing: true,
   },
@@ -86,7 +84,6 @@ const campaignCards = [
     label: "Campaign Gamma — Web3 Creator",
     team: "12-person verified team",
     metric: "1K+ avg. views/post",
-    duration: "Extended engagement",
     focus: "Active X engagement combined with regional-language Instagram growth and full account management.",
     ongoing: false,
   },
@@ -94,7 +91,6 @@ const campaignCards = [
     label: "Campaign Delta — Web3 KOL",
     team: "10-person team",
     metric: "1K+ avg. views/post",
-    duration: "Extended engagement",
     focus: "X interaction management and dedicated Telegram community engagement.",
     ongoing: false,
   },
@@ -102,7 +98,6 @@ const campaignCards = [
     label: "Campaign Epsilon — Web3 KOL",
     team: "5-person team",
     metric: "2K+ avg. views/post",
-    duration: "Short-term engagement",
     focus: "Coordinated X engagement and interaction management.",
     ongoing: false,
   },
@@ -110,7 +105,6 @@ const campaignCards = [
     label: "Campaign Zeta — Web3 KOL",
     team: "10-person team",
     metric: "4K+ avg. views/post",
-    duration: "Short-term engagement",
     focus: "Coordinated X engagement and interaction management at higher volume.",
     ongoing: true,
   },
@@ -493,49 +487,50 @@ function ProofOfWork() {
             {campaignCards.map((c, i) => (
               <div
                 key={i}
-                className="glass rounded-2xl p-7 flex flex-col gap-4"
+                className="glass rounded-2xl p-7 flex flex-col gap-4 relative"
                 style={{
                   opacity: inView ? 1 : 0,
                   transform: inView ? "none" : "translateY(10px)",
                   transition: `opacity 0.5s ${0.2 + i * 0.1}s, transform 0.5s ${0.2 + i * 0.1}s`,
                 }}
               >
-                <p className="font-display font-semibold text-lg tracking-tight" style={{ color: "#F2F7F3" }}>
+                {/* Status stamp — top right corner */}
+                <div className="absolute top-5 right-5">
+                  {c.ongoing ? (
+                    <span
+                      className="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-widest font-medium px-2 py-0.5 rounded-full"
+                      style={{
+                        color: "#20C66B",
+                        background: "rgba(32,198,107,0.08)",
+                        border: "1px solid rgba(32,198,107,0.25)",
+                      }}
+                    >
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#20C66B] pulse-dot" />
+                      Ongoing
+                    </span>
+                  ) : (
+                    <span
+                      className="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-widest font-medium px-2 py-0.5 rounded-full"
+                      style={{
+                        color: "#B6FF20",
+                        background: "rgba(182,255,32,0.06)",
+                        border: "1px solid rgba(182,255,32,0.2)",
+                      }}
+                    >
+                      <svg width="9" height="9" viewBox="0 0 12 12" fill="none">
+                        <path d="M2.5 6.2l2.3 2.3 4.7-4.7" stroke="#B6FF20" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                      Completed
+                    </span>
+                  )}
+                </div>
+
+                <p className="font-display font-semibold text-lg tracking-tight pr-24" style={{ color: "#F2F7F3" }}>
                   {c.label}
                 </p>
                 <div className="flex flex-col gap-1.5">
                   <p className="text-sm" style={{ color: "#9AADA2" }}>{c.team}</p>
                   <p className="text-sm" style={{ color: "#9AADA2" }}>{c.metric}</p>
-                  <div className="flex items-center gap-2">
-                    <p className="text-sm" style={{ color: "#9AADA2" }}>{c.duration}</p>
-                    {c.ongoing ? (
-                      <span
-                        className="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-widest font-medium px-2 py-0.5 rounded-full"
-                        style={{
-                          color: "#20C66B",
-                          background: "rgba(32,198,107,0.08)",
-                          border: "1px solid rgba(32,198,107,0.25)",
-                        }}
-                      >
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#20C66B] pulse-dot" />
-                        Ongoing
-                      </span>
-                    ) : (
-                      <span
-                        className="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-widest font-medium px-2 py-0.5 rounded-full"
-                        style={{
-                          color: "#B6FF20",
-                          background: "rgba(182,255,32,0.06)",
-                          border: "1px solid rgba(182,255,32,0.2)",
-                        }}
-                      >
-                        <svg width="9" height="9" viewBox="0 0 12 12" fill="none">
-                          <path d="M2.5 6.2l2.3 2.3 4.7-4.7" stroke="#B6FF20" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                        Completed
-                      </span>
-                    )}
-                  </div>
                 </div>
                 <div style={{ borderTop: "1px solid #17352A", paddingTop: "1rem" }}>
                   <p className="text-xs leading-relaxed" style={{ color: "#9AADA2" }}>{c.focus}</p>
