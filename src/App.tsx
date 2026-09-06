@@ -862,7 +862,7 @@ function About() {
   );
 }
 
-// ─── Why Us (three independently-styled cards, Phantom-inspired layout)
+// ─── Why Us (three genuinely distinct cards — one inverted bright, playful stickers/blobs, Phantom-style contrast without breaking brand)
 
 function WhyUs() {
   const { ref, inView } = useInView();
@@ -872,106 +872,156 @@ function WhyUs() {
       <div className={`max-w-7xl mx-auto transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
 
-          {/* Card 1 — Client feedback */}
+          {/* Card 1 — Client feedback. Dark forest, oversized cropped quote mark, soft blobs */}
           <div
-            className="rounded-3xl p-9 flex flex-col justify-between min-h-[440px] relative overflow-hidden"
+            className="rounded-[28px] p-9 flex flex-col justify-between min-h-[460px] relative overflow-hidden"
             style={{
-              background: "linear-gradient(155deg, #0F2A1C 0%, #07110E 70%)",
-              border: "1px solid #1e4235",
+              background: "#0B1F16",
               opacity: inView ? 1 : 0,
               transform: inView ? "none" : "translateY(14px)",
               transition: "opacity 0.55s 0.05s, transform 0.55s 0.05s",
             }}
           >
-            <h3 className="font-display font-bold text-3xl leading-tight tracking-tight" style={{ color: "#F2F7F3" }}>
-              Feedback from the people we&rsquo;ve worked with.
-            </h3>
+            {/* Soft glow blobs */}
+            <div className="absolute -top-10 -right-16 w-56 h-56 rounded-full" style={{ background: "radial-gradient(circle, rgba(32,198,107,0.35) 0%, transparent 70%)", filter: "blur(10px)" }} />
+            <div className="absolute bottom-0 -left-10 w-40 h-40 rounded-full" style={{ background: "radial-gradient(circle, rgba(182,255,32,0.12) 0%, transparent 70%)", filter: "blur(14px)" }} />
 
-            <div className="relative mt-10">
-              <svg width="40" height="32" viewBox="0 0 40 32" fill="none" className="mb-4 opacity-40">
-                <path d="M0 32V19.6C0 13.87 1.6 9.07 4.8 5.2C8.13 1.33 12.53 -0.4 18 0V6.4C15.07 6.53 12.8 7.6 11.2 9.6C9.73 11.47 9 13.6 9 16H18V32H0ZM22 32V19.6C22 13.87 23.6 9.07 26.8 5.2C30.13 1.33 34.53 -0.4 40 0V6.4C37.07 6.53 34.8 7.6 33.2 9.6C31.73 11.47 31 13.6 31 16H40V32H22Z" fill="#20C66B" />
-              </svg>
+            {/* Oversized cropped quote mark, bleeding off the top edge */}
+            <svg
+              width="180" height="140" viewBox="0 0 40 32" fill="none"
+              className="absolute -top-4 -right-4 opacity-90"
+            >
+              <path d="M0 32V19.6C0 13.87 1.6 9.07 4.8 5.2C8.13 1.33 12.53 -0.4 18 0V6.4C15.07 6.53 12.8 7.6 11.2 9.6C9.73 11.47 9 13.6 9 16H18V32H0ZM22 32V19.6C22 13.87 23.6 9.07 26.8 5.2C30.13 1.33 34.53 -0.4 40 0V6.4C37.07 6.53 34.8 7.6 33.2 9.6C31.73 11.47 31 13.6 31 16H40V32H22Z" fill="#132B1F" />
+            </svg>
+
+            <div className="relative z-10">
+              <h3 className="font-display font-bold text-[28px] leading-[1.15] tracking-tight max-w-[220px]" style={{ color: "#F2F7F3" }}>
+                Feedback from people we&rsquo;ve worked with.
+              </h3>
+            </div>
+
+            <div className="relative z-10 mt-10">
+              {/* Tilted "verified" sticker */}
+              <div
+                className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 mb-5"
+                style={{
+                  background: "#B6FF20",
+                  transform: "rotate(-4deg)",
+                  boxShadow: "0 6px 18px rgba(182,255,32,0.25)",
+                }}
+              >
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                  <path d="M2.5 6.2l2.3 2.3 4.7-4.7" stroke="#07110E" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                <span className="text-[11px] font-semibold" style={{ color: "#07110E" }}>Verified client</span>
+              </div>
+
               <p className="text-lg leading-relaxed" style={{ color: "#F2F7F3" }}>
-                &ldquo;Working with Maxi took our campaign execution from scattered to structured within days.&rdquo;
+                &ldquo;Took our campaign execution from scattered to structured within days.&rdquo;
               </p>
-              <p className="text-xs mt-4" style={{ color: "#9AADA2" }}>Web3 client, anonymized for confidentiality</p>
+              <p className="text-xs mt-3" style={{ color: "#7FA391" }}>Web3 client, anonymized for confidentiality</p>
             </div>
           </div>
 
-          {/* Card 2 — Seamless process */}
+          {/* Card 2 — Seamless onboarding. INVERTED bright lime, dark text, scattered pill cluster */}
           <div
-            className="rounded-3xl p-9 flex flex-col justify-between min-h-[440px] relative overflow-hidden"
+            className="rounded-[28px] p-9 flex flex-col justify-between min-h-[460px] relative overflow-hidden"
             style={{
-              background: "#07110E",
-              border: "1px solid #17352A",
+              background: "#B6FF20",
               opacity: inView ? 1 : 0,
               transform: inView ? "none" : "translateY(14px)",
               transition: "opacity 0.55s 0.15s, transform 0.55s 0.15s",
             }}
           >
-            <h3 className="font-display font-bold text-3xl leading-tight tracking-tight" style={{ color: "#F2F7F3" }}>
-              Onboarding that takes days, not weeks.
+            <h3 className="font-display font-bold text-[28px] leading-[1.15] tracking-tight max-w-[220px] relative z-10" style={{ color: "#07110E" }}>
+              Onboarding measured in days, not weeks.
             </h3>
 
-            <div className="flex flex-col gap-3 mt-10">
-              {[
-                { label: "Brief received", done: true },
-                { label: "Team deployed", done: true },
-                { label: "Campaign live", done: false },
-              ].map((step, i) => (
-                <div
-                  key={i}
-                  className="flex items-center gap-3 rounded-xl px-4 py-3"
-                  style={{ background: "rgba(32,198,107,0.06)", border: "1px solid rgba(32,198,107,0.18)" }}
-                >
-                  <div
-                    className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0"
-                    style={{
-                      background: step.done ? "#20C66B" : "transparent",
-                      border: step.done ? "none" : "1.5px solid #17352A",
-                    }}
-                  >
-                    {step.done && (
-                      <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
-                        <path d="M2.5 6.2l2.3 2.3 4.7-4.7" stroke="#07110E" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    )}
-                  </div>
-                  <span className="text-sm" style={{ color: step.done ? "#F2F7F3" : "#9AADA2" }}>{step.label}</span>
-                  {!step.done && <span className="ml-auto w-1.5 h-1.5 rounded-full bg-[#B6FF20] pulse-dot" />}
-                </div>
-              ))}
+            {/* Scattered sticker cluster, Phantom-style */}
+            <div className="relative flex-1 mt-6" style={{ minHeight: 220 }}>
+              <div
+                className="absolute top-2 left-2 flex items-center gap-2 rounded-full px-4 py-2 bg-[#07110E]"
+                style={{ transform: "rotate(-6deg)" }}
+              >
+                <span className="w-2 h-2 rounded-full bg-[#20C66B]" />
+                <span className="text-sm font-medium" style={{ color: "#F2F7F3" }}>Brief received</span>
+              </div>
+
+              <div
+                className="absolute top-16 right-0 flex items-center gap-2 rounded-full px-4 py-2 bg-[#07110E]"
+                style={{ transform: "rotate(4deg)" }}
+              >
+                <span className="w-2 h-2 rounded-full bg-[#20C66B]" />
+                <span className="text-sm font-medium" style={{ color: "#F2F7F3" }}>Team deployed</span>
+              </div>
+
+              {/* Central icon circle */}
+              <div
+                className="absolute left-1/2 top-1/2 w-20 h-20 rounded-full flex items-center justify-center"
+                style={{ background: "#07110E", transform: "translate(-50%, -50%) rotate(-3deg)" }}
+              >
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
+                  <path d="M4 12h14M12 6l6 6-6 6" stroke="#B6FF20" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </div>
+
+              <div
+                className="absolute bottom-4 left-4 flex items-center gap-2 rounded-full px-4 py-2"
+                style={{ background: "rgba(7,17,14,0.12)", border: "1.5px solid rgba(7,17,14,0.25)", transform: "rotate(3deg)" }}
+              >
+                <span className="w-2 h-2 rounded-full bg-[#07110E] pulse-dot" />
+                <span className="text-sm font-medium" style={{ color: "#07110E" }}>Campaign live</span>
+              </div>
             </div>
           </div>
 
-          {/* Card 3 — Flexible engagement */}
+          {/* Card 3 — Flexible engagement. Near-black, tilted ticket pills echoing a yes/no toggle */}
           <div
-            className="rounded-3xl p-9 flex flex-col justify-between min-h-[440px] relative overflow-hidden"
+            className="rounded-[28px] p-9 flex flex-col justify-between min-h-[460px] relative overflow-hidden"
             style={{
-              background: "linear-gradient(155deg, #14210A 0%, #07110E 70%)",
-              border: "1px solid rgba(182,255,32,0.18)",
+              background: "#050B08",
               opacity: inView ? 1 : 0,
               transform: inView ? "none" : "translateY(14px)",
               transition: "opacity 0.55s 0.25s, transform 0.55s 0.25s",
             }}
           >
-            <h3 className="font-display font-bold text-3xl leading-tight tracking-tight" style={{ color: "#F2F7F3" }}>
+            <h3 className="font-display font-bold text-[28px] leading-[1.15] tracking-tight max-w-[230px]" style={{ color: "#F2F7F3" }}>
               No long lock-ins. Stay because it works.
             </h3>
 
-            <div className="flex flex-col gap-4 mt-10">
-              <div className="flex items-center justify-between rounded-xl px-4 py-3.5" style={{ background: "rgba(182,255,32,0.06)", border: "1px solid rgba(182,255,32,0.2)" }}>
-                <span className="text-sm font-medium" style={{ color: "#F2F7F3" }}>Month-to-month</span>
-                <span className="text-xs px-2 py-0.5 rounded-full" style={{ color: "#B6FF20", border: "1px solid rgba(182,255,32,0.3)" }}>Default</span>
+            <div className="relative flex-1 mt-6" style={{ minHeight: 220 }}>
+              {/* Tilted "ticket" pills, Phantom-yes/no inspired but on-brand */}
+              <div
+                className="absolute top-4 left-0 flex items-center gap-2 rounded-2xl px-5 py-3"
+                style={{ background: "#B6FF20", transform: "rotate(-7deg)", boxShadow: "0 10px 24px rgba(182,255,32,0.2)" }}
+              >
+                <span className="text-sm font-bold" style={{ color: "#07110E" }}>Month-to-month</span>
               </div>
-              <div className="flex items-center justify-between rounded-xl px-4 py-3.5" style={{ border: "1px solid #17352A" }}>
-                <span className="text-sm" style={{ color: "#9AADA2" }}>Long-term contract</span>
-                <span className="text-xs px-2 py-0.5 rounded-full" style={{ color: "#9AADA2", border: "1px solid #17352A" }}>Optional</span>
+
+              <div
+                className="absolute top-24 right-0 flex items-center gap-2 rounded-2xl px-5 py-3"
+                style={{ border: "1.5px solid #17352A", transform: "rotate(6deg)" }}
+              >
+                <span className="text-sm" style={{ color: "#5C7768" }}>Long lock-in</span>
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                  <path d="M2.5 2.5l7 7M9.5 2.5l-7 7" stroke="#5C7768" strokeWidth="1.6" strokeLinecap="round" />
+                </svg>
               </div>
-              <p className="text-xs leading-relaxed mt-1" style={{ color: "#9AADA2" }}>
-                Clients stay because of results, not contract terms.
-              </p>
+
+              {/* Checkmark badge, centered lower */}
+              <div
+                className="absolute bottom-2 left-1/2 w-16 h-16 rounded-full flex items-center justify-center"
+                style={{ background: "#20C66B", transform: "translateX(-50%) rotate(-4deg)" }}
+              >
+                <svg width="24" height="24" viewBox="0 0 12 12" fill="none">
+                  <path d="M2.5 6.2l2.3 2.3 4.7-4.7" stroke="#07110E" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </div>
             </div>
+
+            <p className="text-xs leading-relaxed" style={{ color: "#5C7768" }}>
+              Clients stay because of results, not contract terms.
+            </p>
           </div>
 
         </div>
