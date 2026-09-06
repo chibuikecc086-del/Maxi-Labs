@@ -862,6 +862,124 @@ function About() {
   );
 }
 
+// ─── Why Us (three independently-styled cards, Phantom-inspired layout)
+
+function WhyUs() {
+  const { ref, inView } = useInView();
+
+  return (
+    <section className="py-28 px-6" ref={ref}>
+      <div className={`max-w-7xl mx-auto transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+
+          {/* Card 1 — Client feedback */}
+          <div
+            className="rounded-3xl p-9 flex flex-col justify-between min-h-[440px] relative overflow-hidden"
+            style={{
+              background: "linear-gradient(155deg, #0F2A1C 0%, #07110E 70%)",
+              border: "1px solid #1e4235",
+              opacity: inView ? 1 : 0,
+              transform: inView ? "none" : "translateY(14px)",
+              transition: "opacity 0.55s 0.05s, transform 0.55s 0.05s",
+            }}
+          >
+            <h3 className="font-display font-bold text-3xl leading-tight tracking-tight" style={{ color: "#F2F7F3" }}>
+              Feedback from the people we&rsquo;ve worked with.
+            </h3>
+
+            <div className="relative mt-10">
+              <svg width="40" height="32" viewBox="0 0 40 32" fill="none" className="mb-4 opacity-40">
+                <path d="M0 32V19.6C0 13.87 1.6 9.07 4.8 5.2C8.13 1.33 12.53 -0.4 18 0V6.4C15.07 6.53 12.8 7.6 11.2 9.6C9.73 11.47 9 13.6 9 16H18V32H0ZM22 32V19.6C22 13.87 23.6 9.07 26.8 5.2C30.13 1.33 34.53 -0.4 40 0V6.4C37.07 6.53 34.8 7.6 33.2 9.6C31.73 11.47 31 13.6 31 16H40V32H22Z" fill="#20C66B" />
+              </svg>
+              <p className="text-lg leading-relaxed" style={{ color: "#F2F7F3" }}>
+                &ldquo;Working with Maxi took our campaign execution from scattered to structured within days.&rdquo;
+              </p>
+              <p className="text-xs mt-4" style={{ color: "#9AADA2" }}>Web3 client, anonymized for confidentiality</p>
+            </div>
+          </div>
+
+          {/* Card 2 — Seamless process */}
+          <div
+            className="rounded-3xl p-9 flex flex-col justify-between min-h-[440px] relative overflow-hidden"
+            style={{
+              background: "#07110E",
+              border: "1px solid #17352A",
+              opacity: inView ? 1 : 0,
+              transform: inView ? "none" : "translateY(14px)",
+              transition: "opacity 0.55s 0.15s, transform 0.55s 0.15s",
+            }}
+          >
+            <h3 className="font-display font-bold text-3xl leading-tight tracking-tight" style={{ color: "#F2F7F3" }}>
+              Onboarding that takes days, not weeks.
+            </h3>
+
+            <div className="flex flex-col gap-3 mt-10">
+              {[
+                { label: "Brief received", done: true },
+                { label: "Team deployed", done: true },
+                { label: "Campaign live", done: false },
+              ].map((step, i) => (
+                <div
+                  key={i}
+                  className="flex items-center gap-3 rounded-xl px-4 py-3"
+                  style={{ background: "rgba(32,198,107,0.06)", border: "1px solid rgba(32,198,107,0.18)" }}
+                >
+                  <div
+                    className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0"
+                    style={{
+                      background: step.done ? "#20C66B" : "transparent",
+                      border: step.done ? "none" : "1.5px solid #17352A",
+                    }}
+                  >
+                    {step.done && (
+                      <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+                        <path d="M2.5 6.2l2.3 2.3 4.7-4.7" stroke="#07110E" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    )}
+                  </div>
+                  <span className="text-sm" style={{ color: step.done ? "#F2F7F3" : "#9AADA2" }}>{step.label}</span>
+                  {!step.done && <span className="ml-auto w-1.5 h-1.5 rounded-full bg-[#B6FF20] pulse-dot" />}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Card 3 — Flexible engagement */}
+          <div
+            className="rounded-3xl p-9 flex flex-col justify-between min-h-[440px] relative overflow-hidden"
+            style={{
+              background: "linear-gradient(155deg, #14210A 0%, #07110E 70%)",
+              border: "1px solid rgba(182,255,32,0.18)",
+              opacity: inView ? 1 : 0,
+              transform: inView ? "none" : "translateY(14px)",
+              transition: "opacity 0.55s 0.25s, transform 0.55s 0.25s",
+            }}
+          >
+            <h3 className="font-display font-bold text-3xl leading-tight tracking-tight" style={{ color: "#F2F7F3" }}>
+              No long lock-ins. Stay because it works.
+            </h3>
+
+            <div className="flex flex-col gap-4 mt-10">
+              <div className="flex items-center justify-between rounded-xl px-4 py-3.5" style={{ background: "rgba(182,255,32,0.06)", border: "1px solid rgba(182,255,32,0.2)" }}>
+                <span className="text-sm font-medium" style={{ color: "#F2F7F3" }}>Month-to-month</span>
+                <span className="text-xs px-2 py-0.5 rounded-full" style={{ color: "#B6FF20", border: "1px solid rgba(182,255,32,0.3)" }}>Default</span>
+              </div>
+              <div className="flex items-center justify-between rounded-xl px-4 py-3.5" style={{ border: "1px solid #17352A" }}>
+                <span className="text-sm" style={{ color: "#9AADA2" }}>Long-term contract</span>
+                <span className="text-xs px-2 py-0.5 rounded-full" style={{ color: "#9AADA2", border: "1px solid #17352A" }}>Optional</span>
+              </div>
+              <p className="text-xs leading-relaxed mt-1" style={{ color: "#9AADA2" }}>
+                Clients stay because of results, not contract terms.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  );
+}
+
 // ─── Contact
 
 function Contact() {
@@ -979,6 +1097,7 @@ export default function App() {
         <Services />
         <Process />
         <About />
+        <WhyUs />
         <Contact />
       </main>
       <Footer />
