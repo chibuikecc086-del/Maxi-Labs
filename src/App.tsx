@@ -862,24 +862,62 @@ function About() {
   );
 }
 
+// ─── Scroll-linked stack-to-grid hook (Phantom-style unstacking cards)
+
+function useScrollReveal() {
+  const ref = useRef<HTMLDivElement>(null);
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    function onScroll() {
+      const el = ref.current;
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      const vh = window.innerHeight;
+      const start = vh * 0.95;
+      const end = vh * 0.4;
+      let p = (start - rect.top) / (start - end);
+      p = Math.min(1, Math.max(0, p));
+      setProgress(p);
+    }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    onScroll();
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, []);
+
+  return { ref, progress };
+}
+
 // ─── Why Us (three genuinely distinct cards — one inverted bright, playful stickers/blobs, Phantom-style contrast without breaking brand)
 
 function WhyUs() {
   const { ref, inView } = useInView();
+  const { ref: gridRef, progress } = useScrollReveal();
+
+  // Stacking offsets — cards start fanned/overlapping, spread apart as you scroll
+  const stackConfig = [
+    { x: 60, rotate: -6, z: 1 },
+    { x: 0, rotate: 0, z: 2 },
+    { x: -60, rotate: 6, z: 1 },
+  ];
 
   return (
     <section className="py-28 px-6" ref={ref}>
       <div className={`max-w-7xl mx-auto transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4" ref={gridRef}>
 
           {/* Card 1 — Web3-native pedigree. Scattered organic blobs, tilted pills, centerpiece icon */}
           <div
             className="rounded-[28px] p-9 flex flex-col justify-between min-h-[460px] relative overflow-hidden"
             style={{
               background: "#0B1F16",
-              opacity: inView ? 1 : 0,
-              transform: inView ? "none" : "translateY(14px)",
-              transition: "opacity 0.55s 0.05s, transform 0.55s 0.05s",
+              transform: `translateX(${(1 - progress) * stackConfig[0].x}px) rotate(${(1 - progress) * stackConfig[0].rotate}deg) scale(${1 - (1 - progress) * 0.08})`,
+              zIndex: stackConfig[0].z,
+              willChange: "transform",
             }}
           >
             <h3 className="font-display font-bold text-[28px] leading-[1.15] tracking-tight max-w-[230px] relative z-10" style={{ color: "#F2F7F3" }}>
@@ -965,9 +1003,9 @@ function WhyUs() {
             className="rounded-[28px] p-9 flex flex-col justify-between min-h-[460px] relative overflow-hidden"
             style={{
               background: "#B6FF20",
-              opacity: inView ? 1 : 0,
-              transform: inView ? "none" : "translateY(14px)",
-              transition: "opacity 0.55s 0.15s, transform 0.55s 0.15s",
+              transform: `translateX(${(1 - progress) * stackConfig[1].x}px) rotate(${(1 - progress) * stackConfig[1].rotate}deg) scale(${1 - (1 - progress) * 0.08})`,
+              zIndex: stackConfig[1].z,
+              willChange: "transform",
             }}
           >
             <h3 className="font-display font-bold text-[28px] leading-[1.15] tracking-tight max-w-[220px] relative z-10" style={{ color: "#07110E" }}>
@@ -1007,9 +1045,9 @@ function WhyUs() {
             className="rounded-[28px] p-9 flex flex-col justify-between min-h-[460px] relative overflow-hidden"
             style={{
               background: "#050B08",
-              opacity: inView ? 1 : 0,
-              transform: inView ? "none" : "translateY(14px)",
-              transition: "opacity 0.55s 0.25s, transform 0.55s 0.25s",
+              transform: `translateX(${(1 - progress) * stackConfig[2].x}px) rotate(${(1 - progress) * stackConfig[2].rotate}deg) scale(${1 - (1 - progress) * 0.08})`,
+              zIndex: stackConfig[2].z,
+              willChange: "transform",
             }}
           >
             <h3 className="font-display font-bold text-[28px] leading-[1.15] tracking-tight max-w-[230px]" style={{ color: "#F2F7F3" }}>
