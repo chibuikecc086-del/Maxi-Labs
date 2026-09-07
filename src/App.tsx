@@ -6,27 +6,27 @@ import logoSrc from "./imports/Gemini_Generated_Image_qmauhcqmauhcqmau.jpg";
 const capabilities = [
   {
     n: "01",
-    title: "Community Architecture",
-    desc: "We design community infrastructure from the ground up — Discord and Telegram structure, role systems, engagement loops, moderation frameworks, and ambassador programs built to sustain themselves over time.",
-    tags: ["Discord buildout", "Role architecture", "Ambassador programs", "Moderation systems"],
+    title: "Social Distribution",
+    desc: "We build the distribution layer behind your social presence — coordinated engagement on X, platform-specific posting cadence, and cross-platform support designed to keep your account consistently visible.",
+    tags: ["Twitter/X strategy", "Cross-platform distribution", "Visibility campaigns", "Posting cadence"],
   },
   {
     n: "02",
-    title: "Social Strategy and Content Systems",
-    desc: "We build the content engine behind your social presence — thread frameworks, posting cadence, platform-specific narrative strategy, and content systems your team can operate consistently.",
-    tags: ["Twitter/X strategy", "Thread frameworks", "Content cadence", "Narrative positioning"],
+    title: "KOL and Creator Engagement",
+    desc: "We source, brief, and coordinate Web3-native creators and key opinion leaders to get your project in front of the CT audiences that actually matter, tracked against clear performance criteria.",
+    tags: ["Creator sourcing", "CT visibility", "Campaign coordination", "Performance tracking"],
   },
   {
     n: "03",
-    title: "Creator and KOL Operations",
-    desc: "We source, brief, and coordinate Web3-native creators and key opinion leaders aligned to your audience. Every activation is planned, tracked, and evaluated against clear criteria.",
-    tags: ["Creator sourcing", "Campaign briefs", "Coordination", "Performance tracking"],
+    title: "Community Activation",
+    desc: "We run structured Telegram engagement — active conversation participation and a consistent community presence that keeps your channel feeling alive without ever reading as automated.",
+    tags: ["Telegram engagement", "Active conversation", "Community presence", "Structured coordination"],
   },
   {
     n: "04",
-    title: "Launch Planning and Execution",
-    desc: "We plan and run the social and community side of your launch — whether a token generation event, collection mint, or protocol debut — with a structured pre-launch runway and day-of operations.",
-    tags: ["Pre-launch runway", "Launch day ops", "Community momentum", "Cross-channel coordination"],
+    title: "Social Growth Systems",
+    desc: "A coordinated team runs engagement across X, Telegram, Instagram, TikTok, and Kick — built to increase visibility, engagement, and dwell time over the life of a campaign, not just a single post.",
+    tags: ["Instagram/TikTok/Kick support", "Team coordination", "Engagement systems", "Dwell time growth"],
   },
 ];
 
@@ -888,12 +888,6 @@ function WhyUs() {
 
             {/* Scattered organic cluster */}
             <div className="relative flex-1 mt-4" style={{ minHeight: 230 }}>
-              {/* Organic color blobs */}
-              <div className="absolute top-2 left-6 w-5 h-5 rounded-full" style={{ background: "#20C66B" }} />
-              <div className="absolute top-0 right-16 w-10 h-14 rounded-full" style={{ background: "rgba(182,255,32,0.35)", transform: "rotate(20deg)" }} />
-              <div className="absolute bottom-8 left-0 w-16 h-16 rounded-full" style={{ background: "rgba(32,198,107,0.3)" }} />
-              <div className="absolute bottom-2 right-4 w-8 h-8 rounded-full" style={{ background: "#0B5D38" }} />
-
               {/* Centerpiece icon, like Phantom's mascot square */}
               <div
                 className="absolute left-1/2 top-8 w-20 h-20 rounded-2xl flex items-center justify-center"
@@ -902,26 +896,62 @@ function WhyUs() {
                 <LogoMark size={44} />
               </div>
 
-              {/* Tilted pill labels, real background — not invented */}
-              <div
-                className="absolute top-6 left-0 flex items-center gap-1.5 rounded-full px-3.5 py-2 bg-[#0F241A]"
-                style={{ transform: "rotate(-8deg)" }}
-              >
-                <span className="text-xs font-semibold" style={{ color: "#F2F7F3" }}>DeFi OGs</span>
+              {/* DeFi OGs — coin icon */}
+              <div className="absolute top-0 left-2 flex flex-col items-start gap-1.5">
+                <div
+                  className="w-9 h-9 rounded-full flex items-center justify-center"
+                  style={{ background: "#20C66B", transform: "rotate(-6deg)" }}
+                >
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                    <circle cx="12" cy="12" r="8" stroke="#07110E" strokeWidth="1.8" />
+                    <path d="M12 8v8M9.5 10a2 2 0 012-1.5h1a2 2 0 010 4h-1a2 2 0 000 4h1a2 2 0 002-1.5" stroke="#07110E" strokeWidth="1.4" strokeLinecap="round" />
+                  </svg>
+                </div>
+                <div
+                  className="flex items-center gap-1.5 rounded-full px-3.5 py-2 bg-[#0F241A]"
+                  style={{ transform: "rotate(-8deg)" }}
+                >
+                  <span className="text-xs font-semibold" style={{ color: "#F2F7F3" }}>DeFi OGs</span>
+                </div>
               </div>
 
-              <div
-                className="absolute top-24 right-0 flex items-center gap-1.5 rounded-full px-3.5 py-2 bg-[#0F241A]"
-                style={{ transform: "rotate(6deg)" }}
-              >
-                <span className="text-xs font-semibold" style={{ color: "#F2F7F3" }}>NFT builders</span>
+              {/* NFT builders — frame/image icon */}
+              <div className="absolute top-16 right-0 flex flex-col items-end gap-1.5">
+                <div
+                  className="w-9 h-9 rounded-full flex items-center justify-center"
+                  style={{ background: "#B6FF20", transform: "rotate(5deg)" }}
+                >
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                    <rect x="4" y="5" width="16" height="14" rx="2" stroke="#07110E" strokeWidth="1.6" />
+                    <circle cx="9" cy="10" r="1.4" fill="#07110E" />
+                    <path d="M5 16l4.5-4.5L12 14l3-3 4 5" stroke="#07110E" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </div>
+                <div
+                  className="flex items-center gap-1.5 rounded-full px-3.5 py-2 bg-[#0F241A]"
+                  style={{ transform: "rotate(6deg)" }}
+                >
+                  <span className="text-xs font-semibold" style={{ color: "#F2F7F3" }}>NFT builders</span>
+                </div>
               </div>
 
-              <div
-                className="absolute bottom-0 left-4 flex items-center gap-1.5 rounded-full px-3.5 py-2 bg-[#0F241A]"
-                style={{ transform: "rotate(4deg)" }}
-              >
-                <span className="text-xs font-semibold" style={{ color: "#F2F7F3" }}>DAO contributors</span>
+              {/* DAO contributors — ballot/governance icon */}
+              <div className="absolute bottom-0 left-4 flex flex-col items-start gap-1.5">
+                <div
+                  className="w-9 h-9 rounded-full flex items-center justify-center"
+                  style={{ background: "#0B5D38", transform: "rotate(-4deg)" }}
+                >
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                    <rect x="5" y="4" width="14" height="16" rx="1.5" stroke="#F2F7F3" strokeWidth="1.6" />
+                    <path d="M8.5 12l2 2 4-4.5" stroke="#F2F7F3" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </div>
+                <div
+                  className="flex items-center gap-1.5 rounded-full px-3.5 py-2 bg-[#0F241A]"
+                  style={{ transform: "rotate(4deg)" }}
+                >
+                  <span className="text-xs font-semibold" style={{ color: "#F2F7F3" }}>DAO contributors</span>
+                </div>
               </div>
             </div>
 
@@ -947,7 +977,7 @@ function WhyUs() {
             {/* Scattered sticker cluster, Phantom-style */}
             <div className="relative flex-1 mt-6" style={{ minHeight: 220 }}>
               <div
-                className="absolute top-2 left-2 flex items-center gap-2 rounded-full px-4 py-2 bg-[#07110E]"
+                className="absolute top-4 left-2 flex items-center gap-2 rounded-full px-4 py-2 bg-[#07110E]"
                 style={{ transform: "rotate(-6deg)" }}
               >
                 <span className="w-2 h-2 rounded-full bg-[#20C66B]" />
@@ -955,25 +985,15 @@ function WhyUs() {
               </div>
 
               <div
-                className="absolute top-16 right-0 flex items-center gap-2 rounded-full px-4 py-2 bg-[#07110E]"
+                className="absolute top-24 right-0 flex items-center gap-2 rounded-full px-4 py-2 bg-[#07110E]"
                 style={{ transform: "rotate(4deg)" }}
               >
                 <span className="w-2 h-2 rounded-full bg-[#20C66B]" />
                 <span className="text-sm font-medium" style={{ color: "#F2F7F3" }}>Team deployed</span>
               </div>
 
-              {/* Central icon circle */}
               <div
-                className="absolute left-1/2 top-1/2 w-20 h-20 rounded-full flex items-center justify-center"
-                style={{ background: "#07110E", transform: "translate(-50%, -50%) rotate(-3deg)" }}
-              >
-                <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
-                  <path d="M4 12h14M12 6l6 6-6 6" stroke="#B6FF20" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </div>
-
-              <div
-                className="absolute bottom-4 left-4 flex items-center gap-2 rounded-full px-4 py-2"
+                className="absolute bottom-2 left-6 flex items-center gap-2 rounded-full px-4 py-2"
                 style={{ background: "rgba(7,17,14,0.12)", border: "1.5px solid rgba(7,17,14,0.25)", transform: "rotate(3deg)" }}
               >
                 <span className="w-2 h-2 rounded-full bg-[#07110E] pulse-dot" />
