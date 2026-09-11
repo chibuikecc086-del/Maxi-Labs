@@ -56,72 +56,38 @@ const processSteps = [
 // ─── Proof of Work data
 
 const dashboardStats = [
-  { value: "Multiple", label: "Campaigns delivered" },
-  { value: "5–20", label: "Team members per campaign" },
-  { value: "300–4K+", label: "Average views per post" },
-  { value: "55K+", label: "Peak reach, single pinned post" },
-  { value: "Flexible", label: "Engagement model" },
+  { value: "10–20", label: "Deployed" },
+  { value: "1K–4K+", label: "Avg. views" },
+  { value: "55K+", label: "Peak reach" },
+  { value: "X · TG · IG · TikTok · Kick", label: "Channels" },
 ];
 
 const platformsList = ["X", "Telegram", "Instagram", "TikTok", "Kick"];
 
 const campaignCards = [
   {
-    label: "Campaign Alpha — Web3 Project",
-    team: "20-person team",
-    metric: "1K+ avg. views/post",
-    focus: "Early-stage community engagement and cross-platform outreach on X to support launch traction.",
-    ongoing: false,
+    n: "01",
+    category: "Web3 Project",
+    teamBadge: "20-Person Deployment",
+    metric: "1K+ avg. views / post",
+    desc: "Early-stage social distribution and cross-platform outreach to support launch traction.",
+    tags: ["X Distribution", "Community", "Launch"],
   },
   {
-    label: "Campaign Beta — Web3 KOL",
-    team: "12-person team",
-    metric: "300+ avg. views/post",
-    focus: "Active engagement on X, structured Telegram community management, plus cross-platform support across TikTok, Instagram, and Kick.",
-    ongoing: true,
+    n: "02",
+    category: "Web3 KOL",
+    teamBadge: "10-Person Deployment",
+    metric: "4K+ avg. views / post",
+    desc: "Coordinated X engagement and interaction management at higher volume.",
+    tags: ["X Engagement", "Social Proof"],
   },
   {
-    label: "Campaign Gamma — Web3 Creator",
-    team: "12-person verified team",
-    metric: "1K+ avg. views/post",
-    focus: "Active X engagement combined with regional-language Instagram growth and full account management.",
-    ongoing: false,
-  },
-  {
-    label: "Campaign Delta — Web3 KOL",
-    team: "10-person team",
-    metric: "1K+ avg. views/post",
-    focus: "X interaction management and dedicated Telegram community engagement.",
-    ongoing: false,
-  },
-  {
-    label: "Campaign Epsilon — Web3 KOL",
-    team: "5-person team",
-    metric: "2K+ avg. views/post",
-    focus: "Coordinated X engagement and interaction management.",
-    ongoing: false,
-  },
-  {
-    label: "Campaign Zeta — Web3 KOL",
-    team: "10-person team",
-    metric: "4K+ avg. views/post",
-    focus: "Coordinated X engagement and interaction management at higher volume.",
-    ongoing: true,
-  },
-];
-
-const platformCapabilities = [
-  {
-    platform: "X",
-    items: ["Active engagement", "Replies", "Quotes", "Post interaction"],
-  },
-  {
-    platform: "Telegram",
-    items: ["Community engagement", "Active conversation participation", "Structured community management", "Consistent community presence"],
-  },
-  {
-    platform: "Instagram / TikTok / Kick",
-    items: ["Engagement support", "Account growth and traction", "Content and community support"],
+    n: "03",
+    category: "Web3 Creator",
+    teamBadge: "10-Person Deployment",
+    metric: "55K+ peak post reach",
+    desc: "Campaign support focused on early visibility, culminating in a single pinned post reaching significant peak reach.",
+    tags: ["X Distribution", "Activation"],
   },
 ];
 
@@ -282,7 +248,7 @@ function NetworkGraphic() {
           cx={n.x}
           cy={n.y}
           r={n.r / 10}
-          fill={n.glow ? "#B6FF20" : "#20C66B"}
+          fill={n.glow ? "#34D399" : "#20C66B"}
           opacity={n.glow ? 0.9 : 0.5}
           className={n.glow ? "pulse-dot" : ""}
         />
@@ -309,7 +275,7 @@ function Hero() {
         <div
           className="orb-2 absolute bottom-1/4 right-1/4 w-[380px] h-[380px] rounded-full"
           style={{
-            background: "radial-gradient(circle, #B6FF20 0%, #20C66B 50%, transparent 70%)",
+            background: "radial-gradient(circle, #34D399 0%, #20C66B 50%, transparent 70%)",
             filter: "blur(90px)",
             opacity: 0.07,
           }}
@@ -404,7 +370,7 @@ function Hero() {
   );
 }
 
-// ─── Proof of Work (replaces old Selected Work / WorkCard section)
+// ─── Proof of Work (editorial numbered list, matches Selected Work wireframe)
 
 function ProofOfWork() {
   const { ref, inView } = useInView();
@@ -415,213 +381,140 @@ function ProofOfWork() {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
           <div>
-            <p className="text-xs uppercase tracking-widest font-semibold mb-4" style={{ color: "#B6FF20" }}>
-              Proof of work
+            <p className="text-xs uppercase tracking-widest font-semibold mb-4" style={{ color: "#34D399" }}>
+              Selected work
             </p>
             <h2 className="font-display font-bold text-4xl md:text-5xl tracking-tight leading-tight" style={{ color: "#F2F7F3" }}>
-              A track record built
+              Built for attention.
               <br />
-              <span className="gradient-text">on real execution.</span>
+              <span className="gradient-text">Proven in-market.</span>
             </h2>
           </div>
           <p className="text-sm max-w-sm leading-relaxed" style={{ color: "#9AADA2" }}>
-            A selection of campaigns we&rsquo;ve supported across Web3 — spanning social proof, X engagement, community activation, and cross-platform support. What follows is the infrastructure and team behind those results, not a service you run yourself.
+            We deploy coordinated teams across X, Telegram, and beyond — turning early attention into measurable, in-market traction. What follows is the infrastructure behind those results, not a service you run yourself.
           </p>
         </div>
 
-        {/* 1. Aggregate dashboard */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-4 mb-20">
+        {/* Stats row */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-24">
           {dashboardStats.map((stat, i) => (
             <div
               key={i}
-              className="glass rounded-2xl p-4 md:p-5 flex flex-col gap-1.5"
+              className="rounded-2xl p-5 flex flex-col gap-1.5"
               style={{
+                border: "1px solid #17352A",
                 opacity: inView ? 1 : 0,
                 transform: inView ? "none" : "translateY(10px)",
                 transition: `opacity 0.5s ${i * 0.06}s, transform 0.5s ${i * 0.06}s`,
               }}
             >
-              <p className="font-display font-extrabold text-2xl md:text-3xl tracking-tight" style={{ color: "#B6FF20" }}>
+              <p className="font-display font-extrabold text-xl md:text-2xl tracking-tight leading-tight" style={{ color: "#34D399" }}>
                 {stat.value}
               </p>
-              <p className="text-xs leading-snug" style={{ color: "#9AADA2" }}>{stat.label}</p>
+              <p className="text-[11px] uppercase tracking-widest" style={{ color: "#5C7768" }}>{stat.label}</p>
             </div>
           ))}
-
-          {/* Platform coverage card — names instead of a count */}
-          <div
-            className="glass rounded-2xl p-4 md:p-5 flex flex-col gap-2.5"
-            style={{
-              opacity: inView ? 1 : 0,
-              transform: inView ? "none" : "translateY(10px)",
-              transition: `opacity 0.5s ${dashboardStats.length * 0.06}s, transform 0.5s ${dashboardStats.length * 0.06}s`,
-            }}
-          >
-            <p className="text-xs leading-snug mb-0.5" style={{ color: "#9AADA2" }}>Platform coverage</p>
-            <div className="flex flex-wrap gap-1.5">
-              {platformsList.map((p) => (
-                <span
-                  key={p}
-                  className="text-[11px] font-medium px-2 py-1 rounded-full"
-                  style={{ color: "#B6FF20", background: "rgba(182,255,32,0.06)", border: "1px solid rgba(182,255,32,0.2)" }}
-                >
-                  {p}
-                </span>
-              ))}
-            </div>
-          </div>
         </div>
 
-        {/* 2. Campaign cards (anonymized) */}
-        <div className="mb-20">
-          <div className="flex items-center justify-between gap-4 mb-6">
-            <p className="text-xs uppercase tracking-widest font-medium" style={{ color: "#20C66B" }}>
-              Campaign snapshots
-            </p>
-            <span className="text-[11px] flex items-center gap-1.5" style={{ color: "#17352A" }}>
-              <span className="w-1.5 h-1.5 rounded-full bg-[#20C66B] pulse-dot" />
-              Updated as engagements complete
-            </span>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {/* Selected Campaigns — numbered editorial rows */}
+        <div className="mb-24">
+          <p className="text-xs uppercase tracking-widest font-medium mb-8" style={{ color: "#5C7768" }}>
+            Selected campaigns
+          </p>
+
+          <div className="flex flex-col">
             {campaignCards.map((c, i) => (
               <div
                 key={i}
-                className="glass rounded-2xl p-7 flex flex-col gap-4 relative"
+                className={`grid grid-cols-1 md:grid-cols-[auto_1fr_auto] gap-4 md:gap-10 py-8 items-start ${
+                  i !== campaignCards.length - 1 ? "border-b" : ""
+                }`}
                 style={{
+                  borderColor: "#17352A",
                   opacity: inView ? 1 : 0,
                   transform: inView ? "none" : "translateY(10px)",
                   transition: `opacity 0.5s ${0.2 + i * 0.1}s, transform 0.5s ${0.2 + i * 0.1}s`,
                 }}
               >
-                {/* Status stamp — top right corner */}
-                <div className="absolute top-5 right-5">
-                  {c.ongoing ? (
-                    <span
-                      className="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-widest font-medium px-2 py-0.5 rounded-full"
-                      style={{
-                        color: "#20C66B",
-                        background: "rgba(32,198,107,0.08)",
-                        border: "1px solid rgba(32,198,107,0.25)",
-                      }}
-                    >
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#20C66B] pulse-dot" />
-                      Ongoing
-                    </span>
-                  ) : (
-                    <span
-                      className="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-widest font-medium px-2 py-0.5 rounded-full"
-                      style={{
-                        color: "#B6FF20",
-                        background: "rgba(182,255,32,0.06)",
-                        border: "1px solid rgba(182,255,32,0.2)",
-                      }}
-                    >
-                      <svg width="9" height="9" viewBox="0 0 12 12" fill="none">
-                        <path d="M2.5 6.2l2.3 2.3 4.7-4.7" stroke="#B6FF20" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                      Completed
-                    </span>
-                  )}
-                </div>
-
-                <p className="font-display font-semibold text-lg tracking-tight pr-24" style={{ color: "#F2F7F3" }}>
-                  {c.label}
+                {/* Number */}
+                <p
+                  className="font-display font-extrabold text-3xl tabular-nums leading-none"
+                  style={{ color: "transparent", WebkitTextStroke: "1.5px #1e4235" }}
+                >
+                  {c.n}
                 </p>
-                <div className="flex flex-col gap-1.5">
-                  <p className="text-sm" style={{ color: "#9AADA2" }}>{c.team}</p>
-                  <p className="text-sm" style={{ color: "#9AADA2" }}>{c.metric}</p>
+
+                {/* Middle content */}
+                <div className="flex flex-col gap-2.5">
+                  <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                    <span className="text-xs uppercase tracking-widest font-semibold" style={{ color: "#F2F7F3" }}>
+                      {c.category}
+                    </span>
+                    <span className="text-xs" style={{ color: "#5C7768" }}>{c.metric}</span>
+                  </div>
+                  <p className="text-sm leading-relaxed max-w-xl" style={{ color: "#9AADA2" }}>{c.desc}</p>
+                  <div className="flex flex-wrap gap-2 mt-1">
+                    {c.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="text-[10px] uppercase tracking-widest px-2.5 py-1 rounded-full"
+                        style={{ color: "#5C7768", border: "1px solid #17352A" }}
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-                <div style={{ borderTop: "1px solid #17352A", paddingTop: "1rem" }}>
-                  <p className="text-xs leading-relaxed" style={{ color: "#9AADA2" }}>{c.focus}</p>
+
+                {/* Right — team badge + view link */}
+                <div className="flex flex-row md:flex-col items-start md:items-end justify-between md:justify-start gap-3 md:gap-4">
+                  <span
+                    className="text-[10px] uppercase tracking-widest px-2.5 py-1 rounded-full whitespace-nowrap"
+                    style={{ color: "#34D399", background: "rgba(52,211,153,0.08)", border: "1px solid rgba(52,211,153,0.25)" }}
+                  >
+                    {c.teamBadge}
+                  </span>
+                  <a
+                    href="#case-snapshot"
+                    className="text-xs font-medium inline-flex items-center gap-1.5 transition-colors"
+                    style={{ color: "#5C7768" }}
+                    onMouseEnter={e => (e.currentTarget.style.color = "#34D399")}
+                    onMouseLeave={e => (e.currentTarget.style.color = "#5C7768")}
+                  >
+                    View
+                    <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+                      <path d="M2 10L10 2M10 2H5M10 2v5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </a>
                 </div>
               </div>
             ))}
           </div>
         </div>
 
-        {/* 3. Cross-platform capability */}
-        <div className="mb-20">
-          <p className="text-xs uppercase tracking-widest font-medium mb-6" style={{ color: "#20C66B" }}>
-            Cross-platform capability
+        {/* Distribution across the stack */}
+        <div className="mb-24" id="case-snapshot">
+          <p className="text-xs uppercase tracking-widest font-medium mb-8" style={{ color: "#5C7768" }}>
+            Distribution across the stack
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {platformCapabilities.map((p, i) => (
-              <div
-                key={i}
-                className="rounded-2xl p-7"
-                style={{
-                  border: "1px solid #17352A",
-                  opacity: inView ? 1 : 0,
-                  transform: inView ? "none" : "translateY(10px)",
-                  transition: `opacity 0.5s ${0.4 + i * 0.1}s, transform 0.5s ${0.4 + i * 0.1}s`,
-                }}
-              >
-                <p className="font-display font-semibold text-base mb-4" style={{ color: "#B6FF20" }}>{p.platform}</p>
-                <ul className="flex flex-col gap-2">
-                  {p.items.map((item) => (
-                    <li key={item} className="text-sm flex items-start gap-2" style={{ color: "#9AADA2" }}>
-                      <span className="w-1 h-1 rounded-full flex-shrink-0 mt-2" style={{ background: "#20C66B" }} />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+          <div
+            className="flex flex-wrap items-center gap-x-10 gap-y-5 py-8"
+            style={{
+              borderTop: "1px solid #17352A",
+              borderBottom: "1px solid #17352A",
+              opacity: inView ? 1 : 0,
+              transform: inView ? "none" : "translateY(10px)",
+              transition: "opacity 0.5s 0.4s, transform 0.5s 0.4s",
+            }}
+          >
+            {platformsList.map((p, i) => (
+              <span key={p} className="flex items-center gap-10">
+                <span className="font-display font-semibold text-lg md:text-xl" style={{ color: "#F2F7F3" }}>{p}</span>
+                {i !== platformsList.length - 1 && (
+                  <span className="hidden md:inline-block w-1 h-1 rounded-full" style={{ background: "#17352A" }} />
+                )}
+              </span>
             ))}
-          </div>
-        </div>
-
-        {/* 4. Mini case study (anonymized) */}
-        <div className="mb-16">
-          <p className="text-xs uppercase tracking-widest font-medium mb-6" style={{ color: "#20C66B" }}>
-            Case snapshot
-          </p>
-          <div className="glass-bright rounded-2xl md:rounded-3xl p-10 md:p-14">
-            <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-10">
-              <div className="flex flex-col gap-5">
-                <h3 className="font-display font-semibold text-2xl tracking-tight" style={{ color: "#F2F7F3" }}>
-                  Building early visibility for a Web3 launch
-                </h3>
-                <div className="flex flex-col gap-3">
-                  <div>
-                    <p className="text-xs uppercase tracking-widest mb-1" style={{ color: "#17352A" }}>Objective</p>
-                    <p className="text-sm leading-relaxed" style={{ color: "#9AADA2" }}>
-                      Build early community visibility for a Web3 project during its launch stage.
-                    </p>
-                  </div>
-                  <div>
-                    <p className="text-xs uppercase tracking-widest mb-1" style={{ color: "#17352A" }}>Execution</p>
-                    <p className="text-sm leading-relaxed" style={{ color: "#9AADA2" }}>
-                      Coordinated engagement on X, structured community outreach, and consistent quote activity around key posts.
-                    </p>
-                  </div>
-                  <div>
-                    <p className="text-xs uppercase tracking-widest mb-1" style={{ color: "#17352A" }}>Outcome</p>
-                    <p className="text-sm leading-relaxed" style={{ color: "#9AADA2" }}>
-                      Established early visibility and reach around the project&rsquo;s launch content.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="flex flex-col justify-center gap-5" style={{ borderLeft: "1px solid #17352A", paddingLeft: "2rem" }}>
-                <div>
-                  <p className="font-display font-extrabold text-3xl" style={{ color: "#B6FF20" }}>10-person</p>
-                  <p className="text-xs mt-1" style={{ color: "#9AADA2" }}>Team deployed</p>
-                </div>
-                <div>
-                  <p className="font-display font-extrabold text-3xl" style={{ color: "#B6FF20" }}>1K+</p>
-                  <p className="text-xs mt-1" style={{ color: "#9AADA2" }}>Average views per post</p>
-                </div>
-                <div>
-                  <p className="font-display font-extrabold text-3xl" style={{ color: "#B6FF20" }}>55K+</p>
-                  <p className="text-xs mt-1" style={{ color: "#9AADA2" }}>Views on a single pinned post</p>
-                </div>
-                <div>
-                  <p className="font-display font-extrabold text-3xl" style={{ color: "#B6FF20" }}>Short-term</p>
-                  <p className="text-xs mt-1" style={{ color: "#9AADA2" }}>Engagement length</p>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
 
@@ -630,13 +523,16 @@ function ProofOfWork() {
           Client information anonymized for confidentiality. Figures shown reflect documented campaign performance and are not attributed to specific individuals or projects.
         </p>
 
-        {/* CTA */}
-        <div className="flex justify-center">
+        {/* Closing line + CTA */}
+        <div className="flex flex-col items-center text-center gap-6">
+          <h3 className="font-display font-bold text-2xl md:text-3xl tracking-tight" style={{ color: "#F2F7F3" }}>
+            Your content. <span className="gradient-text">Our distribution.</span>
+          </h3>
           <a
             href="#contact"
             className="btn-primary px-8 py-3.5 rounded-xl text-[15px] inline-flex items-center gap-2.5 font-semibold"
           >
-            Start a conversation
+            Work with Maxi Labs
             <svg width="14" height="14" fill="none" viewBox="0 0 14 14">
               <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
@@ -646,6 +542,7 @@ function ProofOfWork() {
     </section>
   );
 }
+
 
 // ─── Services (merged — alternating row layout)
 
@@ -749,7 +646,7 @@ function Process() {
           <div
             className="hidden md:block absolute top-[13px] left-0 h-px"
             style={{
-              background: "linear-gradient(90deg, #20C66B, #B6FF20)",
+              background: "linear-gradient(90deg, #20C66B, #34D399)",
               width: inView ? "100%" : "0%",
               transition: "width 1.1s cubic-bezier(0.16,1,0.3,1) 0.2s",
             }}
@@ -771,12 +668,12 @@ function Process() {
                   className="relative z-10 w-[26px] h-[26px] rounded-full flex items-center justify-center flex-shrink-0"
                   style={{
                     background: "#07110E",
-                    border: `1.5px solid ${i === 0 ? "#B6FF20" : "#17352A"}`,
+                    border: `1.5px solid ${i === 0 ? "#34D399" : "#17352A"}`,
                   }}
                 >
                   <span
                     className="text-[10px] font-bold tabular-nums"
-                    style={{ color: i === 0 ? "#B6FF20" : "#9AADA2" }}
+                    style={{ color: i === 0 ? "#34D399" : "#9AADA2" }}
                   >
                     {step.n}
                   </span>
@@ -900,9 +797,9 @@ function WhyUs() {
 
   // Stacking offsets — cards start fanned/overlapping, spread apart as you scroll
   const stackConfig = [
-    { x: 60, rotate: -6, z: 1 },
-    { x: 0, rotate: 0, z: 2 },
-    { x: -60, rotate: 6, z: 1 },
+    { x: 106, rotate: -8, z: 1 },
+    { x: 0, rotate: 0, z: 3 },
+    { x: -106, rotate: 8, z: 1 },
   ];
 
   return (
@@ -915,7 +812,7 @@ function WhyUs() {
             className="rounded-[28px] p-9 flex flex-col justify-between min-h-[460px] relative overflow-hidden"
             style={{
               background: "#0B1F16",
-              transform: `translateX(${(1 - progress) * stackConfig[0].x}px) rotate(${(1 - progress) * stackConfig[0].rotate}deg) scale(${1 - (1 - progress) * 0.08})`,
+              transform: `translateX(${(1 - progress) * stackConfig[0].x}%) rotate(${(1 - progress) * stackConfig[0].rotate}deg) scale(${1 - (1 - progress) * 0.12})`,
               zIndex: stackConfig[0].z,
               willChange: "transform",
             }}
@@ -929,7 +826,7 @@ function WhyUs() {
               {/* Centerpiece icon, like Phantom's mascot square */}
               <div
                 className="absolute left-1/2 top-8 w-20 h-20 rounded-2xl flex items-center justify-center"
-                style={{ background: "#B6FF20", transform: "translateX(-50%) rotate(-3deg)", boxShadow: "0 12px 30px rgba(182,255,32,0.25)" }}
+                style={{ background: "#34D399", transform: "translateX(-50%) rotate(-3deg)", boxShadow: "0 12px 30px rgba(52,211,153,0.25)" }}
               >
                 <LogoMark size={44} />
               </div>
@@ -957,7 +854,7 @@ function WhyUs() {
               <div className="absolute top-16 right-0 flex flex-col items-end gap-1.5">
                 <div
                   className="w-9 h-9 rounded-full flex items-center justify-center"
-                  style={{ background: "#B6FF20", transform: "rotate(5deg)" }}
+                  style={{ background: "#34D399", transform: "rotate(5deg)" }}
                 >
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
                     <rect x="4" y="5" width="16" height="14" rx="2" stroke="#07110E" strokeWidth="1.6" />
@@ -1002,8 +899,8 @@ function WhyUs() {
           <div
             className="rounded-[28px] p-9 flex flex-col justify-between min-h-[460px] relative overflow-hidden"
             style={{
-              background: "#B6FF20",
-              transform: `translateX(${(1 - progress) * stackConfig[1].x}px) rotate(${(1 - progress) * stackConfig[1].rotate}deg) scale(${1 - (1 - progress) * 0.08})`,
+              background: "#34D399",
+              transform: `translateX(${(1 - progress) * stackConfig[1].x}%) rotate(${(1 - progress) * stackConfig[1].rotate}deg) scale(${1 - (1 - progress) * 0.12})`,
               zIndex: stackConfig[1].z,
               willChange: "transform",
             }}
@@ -1045,7 +942,7 @@ function WhyUs() {
             className="rounded-[28px] p-9 flex flex-col justify-between min-h-[460px] relative overflow-hidden"
             style={{
               background: "#050B08",
-              transform: `translateX(${(1 - progress) * stackConfig[2].x}px) rotate(${(1 - progress) * stackConfig[2].rotate}deg) scale(${1 - (1 - progress) * 0.08})`,
+              transform: `translateX(${(1 - progress) * stackConfig[2].x}%) rotate(${(1 - progress) * stackConfig[2].rotate}deg) scale(${1 - (1 - progress) * 0.12})`,
               zIndex: stackConfig[2].z,
               willChange: "transform",
             }}
@@ -1058,7 +955,7 @@ function WhyUs() {
               {/* Tilted "ticket" pills, Phantom-yes/no inspired but on-brand */}
               <div
                 className="absolute top-4 left-0 flex items-center gap-2 rounded-2xl px-5 py-3"
-                style={{ background: "#B6FF20", transform: "rotate(-7deg)", boxShadow: "0 10px 24px rgba(182,255,32,0.2)" }}
+                style={{ background: "#34D399", transform: "rotate(-7deg)", boxShadow: "0 10px 24px rgba(52,211,153,0.2)" }}
               >
                 <span className="text-sm font-bold" style={{ color: "#07110E" }}>Month-to-month</span>
               </div>
@@ -1108,7 +1005,7 @@ function Contact() {
           <div
             className="absolute inset-0"
             style={{
-              background: "radial-gradient(ellipse at 30% 50%, rgba(11,93,56,0.6) 0%, transparent 65%), radial-gradient(ellipse at 80% 30%, rgba(182,255,32,0.06) 0%, transparent 55%)",
+              background: "radial-gradient(ellipse at 30% 50%, rgba(11,93,56,0.6) 0%, transparent 65%), radial-gradient(ellipse at 80% 30%, rgba(52,211,153,0.06) 0%, transparent 55%)",
             }}
           />
           <div className="absolute inset-0 border border-[#17352A] rounded-2xl md:rounded-3xl" style={{ borderColor: "#1e4235" }} />
@@ -1136,7 +1033,7 @@ function Contact() {
           >
             <div>
               <p className="text-xs uppercase tracking-widest mb-2" style={{ color: "#9AADA2" }}>Preferred channel</p>
-              <p className="font-display font-semibold text-xl mb-1 transition-colors group-hover:text-[#B6FF20]" style={{ color: "#F2F7F3" }}>
+              <p className="font-display font-semibold text-xl mb-1 transition-colors group-hover:text-[#34D399]" style={{ color: "#F2F7F3" }}>
                 Message us on Telegram
               </p>
               <p className="text-sm" style={{ color: "#9AADA2" }}>@maxilabs</p>
@@ -1160,7 +1057,7 @@ function Contact() {
           >
             <div>
               <p className="text-xs uppercase tracking-widest mb-2" style={{ color: "#9AADA2" }}>Follow our work</p>
-              <p className="font-display font-semibold text-xl mb-1 transition-colors group-hover:text-[#B6FF20]" style={{ color: "#F2F7F3" }}>
+              <p className="font-display font-semibold text-xl mb-1 transition-colors group-hover:text-[#34D399]" style={{ color: "#F2F7F3" }}>
                 Follow us on X
               </p>
               <p className="text-sm" style={{ color: "#9AADA2" }}>@maxilabs</p>
