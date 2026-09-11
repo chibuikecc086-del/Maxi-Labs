@@ -17,8 +17,8 @@
 
   --color-green:        #20C66B;
   --color-green-glow:   rgba(32,198,107,0.28);
-  --color-lime:         #B6FF20;
-  --color-lime-glow:    rgba(182,255,32,0.18);
+  --color-lime:         #34D399;
+  --color-lime-glow:    rgba(52,211,153,0.18);
   --color-emerald:      #0B5D38;
 
   --color-text:         #F2F7F3;
@@ -88,14 +88,14 @@ body {
 
 /* Gradient text — emerald to lime */
 .gradient-text {
-  background: linear-gradient(120deg, #20C66B 0%, #B6FF20 100%);
+  background: linear-gradient(120deg, #0F5132 0%, #20C66B 55%, #34D399 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .gradient-text-subtle {
-  background: linear-gradient(120deg, #6ee7a8 0%, #B6FF20 100%);
+  background: linear-gradient(120deg, #3d8f61 0%, #34D399 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -155,7 +155,7 @@ body {
 
 /* Primary CTA — acid lime on dark */
 .btn-primary {
-  background: #B6FF20;
+  background: #34D399;
   border: none;
   color: #07110E;
   font-family: 'Manrope', sans-serif;
@@ -167,9 +167,9 @@ body {
 }
 
 .btn-primary:hover {
-  background: #c8ff4a;
+  background: #5EEAA5;
   transform: translateY(-2px);
-  box-shadow: 0 8px 28px rgba(182,255,32,0.35);
+  box-shadow: 0 8px 28px rgba(52,211,153,0.35);
 }
 
 /* Ghost button */
