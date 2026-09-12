@@ -56,7 +56,7 @@ const processSteps = [
 // ─── Proof of Work data
 
 const dashboardStats = [
-  { value: "10–20", label: "Deployed" },
+  { value: "Scalable", label: "Operators per campaign" },
   { value: "1K–4K+", label: "Avg. views" },
   { value: "55K+", label: "Peak reach" },
   { value: "X · TG · IG · TikTok · Kick", label: "Channels" },
