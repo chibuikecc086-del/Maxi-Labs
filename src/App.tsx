@@ -764,8 +764,14 @@ function About() {
 function useScrollReveal() {
   const ref = useRef<HTMLDivElement>(null);
   const [progress, setProgress] = useState(0);
+  const [isDesktop, setIsDesktop] = useState(false);
 
   useEffect(() => {
+    const mq = window.matchMedia("(min-width: 1024px)");
+    const updateIsDesktop = () => setIsDesktop(mq.matches);
+    updateIsDesktop();
+    mq.addEventListener("change", updateIsDesktop);
+
     function onScroll() {
       const el = ref.current;
       if (!el) return;
@@ -783,17 +789,18 @@ function useScrollReveal() {
     return () => {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
+      mq.removeEventListener("change", updateIsDesktop);
     };
   }, []);
 
-  return { ref, progress };
+  return { ref, progress, isDesktop };
 }
 
 // ─── Why Us (three genuinely distinct cards — one inverted bright, playful stickers/blobs, Phantom-style contrast without breaking brand)
 
 function WhyUs() {
   const { ref, inView } = useInView();
-  const { ref: gridRef, progress } = useScrollReveal();
+  const { ref: gridRef, progress, isDesktop } = useScrollReveal();
 
   // Stacking offsets — cards start fanned/overlapping, spread apart as you scroll
   const stackConfig = [
@@ -812,7 +819,7 @@ function WhyUs() {
             className="rounded-[28px] p-9 flex flex-col justify-between min-h-[460px] relative overflow-hidden"
             style={{
               background: "#0B1F16",
-              transform: `translateX(${(1 - progress) * stackConfig[0].x}%) rotate(${(1 - progress) * stackConfig[0].rotate}deg) scale(${1 - (1 - progress) * 0.12})`,
+              transform: isDesktop ? `translateX(${(1 - progress) * stackConfig[0].x}%) rotate(${(1 - progress) * stackConfig[0].rotate}deg) scale(${1 - (1 - progress) * 0.12})` : "none",
               zIndex: stackConfig[0].z,
               willChange: "transform",
             }}
@@ -900,7 +907,7 @@ function WhyUs() {
             className="rounded-[28px] p-9 flex flex-col justify-between min-h-[460px] relative overflow-hidden"
             style={{
               background: "#34D399",
-              transform: `translateX(${(1 - progress) * stackConfig[1].x}%) rotate(${(1 - progress) * stackConfig[1].rotate}deg) scale(${1 - (1 - progress) * 0.12})`,
+              transform: isDesktop ? `translateX(${(1 - progress) * stackConfig[1].x}%) rotate(${(1 - progress) * stackConfig[1].rotate}deg) scale(${1 - (1 - progress) * 0.12})` : "none",
               zIndex: stackConfig[1].z,
               willChange: "transform",
             }}
@@ -942,7 +949,7 @@ function WhyUs() {
             className="rounded-[28px] p-9 flex flex-col justify-between min-h-[460px] relative overflow-hidden"
             style={{
               background: "#050B08",
-              transform: `translateX(${(1 - progress) * stackConfig[2].x}%) rotate(${(1 - progress) * stackConfig[2].rotate}deg) scale(${1 - (1 - progress) * 0.12})`,
+              transform: isDesktop ? `translateX(${(1 - progress) * stackConfig[2].x}%) rotate(${(1 - progress) * stackConfig[2].rotate}deg) scale(${1 - (1 - progress) * 0.12})` : "none",
               zIndex: stackConfig[2].z,
               willChange: "transform",
             }}
