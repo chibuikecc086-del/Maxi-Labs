@@ -694,6 +694,151 @@ function Process() {
   );
 }
 
+// ─── Live Demo (converted from the standalone mockup — TG coordination + X engagement)
+
+function LiveDemo() {
+  const { ref, inView } = useInView(0.3);
+  const [scene, setScene] = useState<"tg" | "post">("tg");
+  const [visibleBubbles, setVisibleBubbles] = useState(0);
+  const [visibleReplies, setVisibleReplies] = useState(0);
+  const [likes, setLikes] = useState(40);
+  const [replies, setReplies] = useState(12);
+  const [views, setViews] = useState(310);
+  const started = useRef(false);
+
+  const bubbles = [
+    { name: "Operator 1", text: "gm ski 👀 wya" },
+    { name: "Operator 2", text: "wait this the one that migrated?" },
+    { name: "Operator 3", text: "been hearing about this since last night ngl" },
+    { name: "Operator 2", text: "nice, numbers moving" },
+  ];
+  const replyList = [
+    { name: "Operator 1", text: "gm ski 👀 wya" },
+    { name: "Operator 2", text: "wait this the one that migrated?" },
+    { name: "Operator 3", text: "been hearing about this since last night ngl" },
+  ];
+
+  useEffect(() => {
+    if (!inView || started.current) return;
+    started.current = true;
+
+    bubbles.forEach((_, i) => {
+      setTimeout(() => setVisibleBubbles(i + 1), 400 + i * 900);
+    });
+
+    setTimeout(() => setScene("post"), 400 + bubbles.length * 900 + 800);
+
+    setTimeout(() => {
+      replyList.forEach((_, i) => {
+        setTimeout(() => setVisibleReplies(i + 1), i * 900);
+      });
+    }, 400 + bubbles.length * 900 + 1600);
+
+    const countStart = 400 + bubbles.length * 900 + 1600 + replyList.length * 900 + 800;
+    setTimeout(() => {
+      const duration = 3000;
+      const t0 = performance.now();
+      function step(now: number) {
+        const p = Math.min(1, (now - t0) / duration);
+        setLikes(Math.floor(40 + (1240 - 40) * p));
+        setReplies(Math.floor(12 + (318 - 12) * p));
+        setViews(Math.floor(310 + (3800 - 310) * p));
+        if (p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }, countStart);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [inView]);
+
+  return (
+    <section className="py-28 px-6" ref={ref}>
+      <div className="max-w-4xl mx-auto">
+        <div className="text-center mb-14">
+          <p className="text-xs uppercase tracking-widest font-medium mb-4" style={{ color: "#34D399" }}>Live example</p>
+          <h2 className="font-display font-bold text-3xl md:text-4xl tracking-tight" style={{ color: "#F2F7F3" }}>
+            Coordinated engagement, <span className="gradient-text">in motion.</span>
+          </h2>
+        </div>
+
+        <div
+          className="rounded-3xl p-8 md:p-12 relative overflow-hidden"
+          style={{ background: "#0B1F16", border: "1px solid #17352A", minHeight: 420 }}
+        >
+          {scene === "tg" && (
+            <div className="max-w-md mx-auto">
+              <div className="rounded-2xl overflow-hidden" style={{ background: "#0C1A15", border: "1px solid #17352A" }}>
+                <div className="px-4 py-3 font-semibold text-sm" style={{ background: "#0F241A", borderBottom: "1px solid #17352A", color: "#F2F7F3" }}>
+                  &lt;Example X KOL&gt; X Team
+                </div>
+                <div className="p-4 flex flex-col gap-2.5" style={{ minHeight: 220 }}>
+                  {bubbles.slice(0, visibleBubbles).map((b, i) => (
+                    <div
+                      key={i}
+                      className="rounded-xl px-3.5 py-2 text-sm max-w-[80%]"
+                      style={{
+                        background: "#132B1F",
+                        color: "#F2F7F3",
+                        alignSelf: i % 2 === 1 ? "flex-end" : "flex-start",
+                      }}
+                    >
+                      <span className="block text-xs font-bold mb-0.5" style={{ color: "#34D399" }}>{b.name}</span>
+                      {b.text}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
+
+          {scene === "post" && (
+            <div className="max-w-md mx-auto">
+              <div className="rounded-2xl p-5" style={{ background: "#0C1A15", border: "1px solid #17352A" }}>
+                <div className="flex items-center gap-2.5 mb-3.5">
+                  <div
+                    className="w-10 h-10 rounded-full flex items-center justify-center font-display font-extrabold text-sm"
+                    style={{ background: "linear-gradient(135deg, #20C66B, #34D399)", color: "#07110E" }}
+                  >
+                    XK
+                  </div>
+                  <div>
+                    <p className="text-sm font-bold" style={{ color: "#F2F7F3" }}>&lt;Example X KOL&gt;</p>
+                    <p className="text-xs" style={{ color: "#5C7768" }}>@examplekol</p>
+                  </div>
+                </div>
+                <p className="text-sm mb-4" style={{ color: "#F2F7F3" }}>$EXMPL just went live on-chain. paying attention rn</p>
+                <div className="flex gap-6 text-xs mb-4" style={{ color: "#9AADA2" }}>
+                  <span><b className="font-display" style={{ color: "#34D399" }}>{likes.toLocaleString()}</b> Likes</span>
+                  <span><b className="font-display" style={{ color: "#34D399" }}>{replies.toLocaleString()}</b> Replies</span>
+                  <span><b className="font-display" style={{ color: "#34D399" }}>{views.toLocaleString()}</b> Views</span>
+                </div>
+                <div className="flex flex-col gap-2.5" style={{ borderTop: "1px solid #17352A", paddingTop: "0.875rem" }}>
+                  {replyList.slice(0, visibleReplies).map((r, i) => (
+                    <div key={i} className="flex items-start gap-2.5">
+                      <div
+                        className="w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-bold flex-shrink-0"
+                        style={{ background: "#132B1F", border: "1px solid #20C66B", color: "#34D399" }}
+                      >
+                        {r.name.slice(-1)}
+                      </div>
+                      <p className="text-xs" style={{ color: "#9AADA2" }}>
+                        <span className="font-bold" style={{ color: "#F2F7F3" }}>{r.name}</span> {r.text}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+
+        <p className="text-xs text-center mt-6 leading-relaxed" style={{ color: "#17352A" }}>
+          Illustrative example. Account and figures shown are for demonstration purposes.
+        </p>
+      </div>
+    </section>
+  );
+}
+
 // ─── About
 
 function About() {
@@ -1115,6 +1260,7 @@ export default function App() {
         <ProofOfWork />
         <Services />
         <Process />
+        <LiveDemo />
         <About />
         <WhyUs />
         <Contact />
