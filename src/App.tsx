@@ -701,16 +701,17 @@ function LiveDemo() {
   const [scene, setScene] = useState<"tg" | "post">("tg");
   const [visibleBubbles, setVisibleBubbles] = useState(0);
   const [visibleReplies, setVisibleReplies] = useState(0);
+  const [taglineVisible, setTaglineVisible] = useState(false);
   const [likes, setLikes] = useState(40);
   const [replies, setReplies] = useState(12);
   const [views, setViews] = useState(310);
   const started = useRef(false);
 
   const bubbles = [
-    { name: "Operator 1", text: "gm ski 👀 wya" },
-    { name: "Operator 2", text: "wait this the one that migrated?" },
-    { name: "Operator 3", text: "been hearing about this since last night ngl" },
-    { name: "Operator 2", text: "nice, numbers moving" },
+    { name: "Operator 1", text: "Target post is live 🔗" },
+    { name: "Operator 2", text: "On it" },
+    { name: "Operator 3", text: "Engaging now ✅" },
+    { name: "Operator 2", text: "Nice, numbers moving" },
   ];
   const replyList = [
     { name: "Operator 1", text: "gm ski 👀 wya" },
@@ -735,6 +736,7 @@ function LiveDemo() {
     }, 400 + bubbles.length * 900 + 1600);
 
     const countStart = 400 + bubbles.length * 900 + 1600 + replyList.length * 900 + 800;
+    setTimeout(() => setTaglineVisible(true), countStart - 400);
     setTimeout(() => {
       const duration = 3000;
       const t0 = performance.now();
@@ -827,6 +829,14 @@ function LiveDemo() {
                   ))}
                 </div>
               </div>
+              {taglineVisible && (
+                <p
+                  className="text-center font-display font-bold text-lg mt-5"
+                  style={{ color: "#34D399" }}
+                >
+                  ur personal cult, engineered 🌱
+                </p>
+              )}
             </div>
           )}
         </div>
