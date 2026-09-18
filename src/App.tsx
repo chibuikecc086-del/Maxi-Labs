@@ -710,7 +710,7 @@ function LiveDemo() {
   const bubbles = [
     { name: "Operator 1", text: "Target post is live 🔗" },
     { name: "Operator 2", text: "On it" },
-    { name: "Operator 3", text: "Engaging now ✅" },
+    { name: "Operator 3", text: "lets roll ✅" },
     { name: "Operator 2", text: "Nice, numbers moving" },
   ];
   const replyList = [
